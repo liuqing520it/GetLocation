@@ -13,7 +13,36 @@
 		491431DE1FDC189200AF225C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491431DD1FDC189200AF225C /* Assets.xcassets */; };
 		491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491431DF1FDC189200AF225C /* LaunchScreen.storyboard */; };
 		491431E41FDC189200AF225C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431E31FDC189200AF225C /* main.m */; };
+		491431F31FDC1A4E00AF225C /* LocationInfoFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 491431F11FDC1A4E00AF225C /* LocationInfoFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; };
+		491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		491431F41FDC1A4E00AF225C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 491431C91FDC189200AF225C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 491431EE1FDC1A4E00AF225C;
+			remoteInfo = LocationInfoFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		491431FB1FDC1A4E00AF225C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		491431D11FDC189200AF225C /* GetLocationInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetLocationInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +55,26 @@
 		491431E01FDC189200AF225C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491431E21FDC189200AF225C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491431E31FDC189200AF225C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationInfoFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		491431F11FDC1A4E00AF225C /* LocationInfoFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationInfoFramework.h; sourceTree = "<group>"; };
+		491431F21FDC1A4E00AF225C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQGetLocationInfoVC.h; sourceTree = "<group>"; };
+		491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQGetLocationInfoVC.m; sourceTree = "<group>"; };
+		491432021FDC26B800AF225C /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		491432041FDC26B900AF225C /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		491432061FDC26BB00AF225C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		491431CE1FDC189200AF225C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491431EB1FDC1A4E00AF225C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				491431D31FDC189200AF225C /* GetLocationInfo */,
+				491431F01FDC1A4E00AF225C /* LocationInfoFramework */,
 				491431D21FDC189200AF225C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				491431D11FDC189200AF225C /* GetLocationInfo.app */,
+				491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,7 +118,65 @@
 			path = GetLocationInfo;
 			sourceTree = "<group>";
 		};
+		491431F01FDC1A4E00AF225C /* LocationInfoFramework */ = {
+			isa = PBXGroup;
+			children = (
+				491432001FDC26A200AF225C /* MapSDK */,
+				491431F11FDC1A4E00AF225C /* LocationInfoFramework.h */,
+				491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */,
+				491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */,
+				491431F21FDC1A4E00AF225C /* Info.plist */,
+			);
+			path = LocationInfoFramework;
+			sourceTree = "<group>";
+		};
+		491432001FDC26A200AF225C /* MapSDK */ = {
+			isa = PBXGroup;
+			children = (
+				491432051FDC26BB00AF225C /* AMap3DMap */,
+				491432011FDC26B800AF225C /* AMapFoundation */,
+				491432031FDC26B900AF225C /* AMapSearch */,
+			);
+			path = MapSDK;
+			sourceTree = "<group>";
+		};
+		491432011FDC26B800AF225C /* AMapFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				491432021FDC26B800AF225C /* AMapFoundationKit.framework */,
+			);
+			path = AMapFoundation;
+			sourceTree = "<group>";
+		};
+		491432031FDC26B900AF225C /* AMapSearch */ = {
+			isa = PBXGroup;
+			children = (
+				491432041FDC26B900AF225C /* AMapSearchKit.framework */,
+			);
+			path = AMapSearch;
+			sourceTree = "<group>";
+		};
+		491432051FDC26BB00AF225C /* AMap3DMap */ = {
+			isa = PBXGroup;
+			children = (
+				491432061FDC26BB00AF225C /* MAMapKit.framework */,
+			);
+			path = AMap3DMap;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		491431EC1FDC1A4E00AF225C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */,
+				491431F31FDC1A4E00AF225C /* LocationInfoFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		491431D01FDC189200AF225C /* GetLocationInfo */ = {
@@ -81,15 +186,35 @@
 				491431CD1FDC189200AF225C /* Sources */,
 				491431CE1FDC189200AF225C /* Frameworks */,
 				491431CF1FDC189200AF225C /* Resources */,
+				491431FB1FDC1A4E00AF225C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				491431F51FDC1A4E00AF225C /* PBXTargetDependency */,
 			);
 			name = GetLocationInfo;
 			productName = GetLocationInfo;
 			productReference = 491431D11FDC189200AF225C /* GetLocationInfo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		491431EE1FDC1A4E00AF225C /* LocationInfoFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 491431F81FDC1A4E00AF225C /* Build configuration list for PBXNativeTarget "LocationInfoFramework" */;
+			buildPhases = (
+				491431EA1FDC1A4E00AF225C /* Sources */,
+				491431EB1FDC1A4E00AF225C /* Frameworks */,
+				491431EC1FDC1A4E00AF225C /* Headers */,
+				491431ED1FDC1A4E00AF225C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocationInfoFramework;
+			productName = LocationInfoFramework;
+			productReference = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +226,10 @@
 				ORGANIZATIONNAME = liuqing;
 				TargetAttributes = {
 					491431D01FDC189200AF225C = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Manual;
+					};
+					491431EE1FDC1A4E00AF225C = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Manual;
 					};
@@ -120,6 +249,7 @@
 			projectRoot = "";
 			targets = (
 				491431D01FDC189200AF225C /* GetLocationInfo */,
+				491431EE1FDC1A4E00AF225C /* LocationInfoFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +262,13 @@
 				491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491431ED1FDC1A4E00AF225C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +285,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		491431EA1FDC1A4E00AF225C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		491431F51FDC1A4E00AF225C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 491431EE1FDC1A4E00AF225C /* LocationInfoFramework */;
+			targetProxy = 491431F41FDC1A4E00AF225C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		491431DA1FDC189200AF225C /* Main.storyboard */ = {
@@ -304,6 +457,72 @@
 			};
 			name = Release;
 		};
+		491431F91FDC1A4E00AF225C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
+				);
+				INFOPLIST_FILE = LocationInfoFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = liuqing.LocationInfoFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		491431FA1FDC1A4E00AF225C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
+					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
+				);
+				INFOPLIST_FILE = LocationInfoFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = liuqing.LocationInfoFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -321,6 +540,15 @@
 			buildConfigurations = (
 				491431E81FDC189200AF225C /* Debug */,
 				491431E91FDC189200AF225C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		491431F81FDC1A4E00AF225C /* Build configuration list for PBXNativeTarget "LocationInfoFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				491431F91FDC1A4E00AF225C /* Debug */,
+				491431FA1FDC1A4E00AF225C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
