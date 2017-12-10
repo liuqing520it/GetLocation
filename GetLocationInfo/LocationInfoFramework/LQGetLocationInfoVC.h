@@ -14,10 +14,17 @@
  获取地理位置信息
  @param latitude 经度
  @param longitude 纬度
- @param province 省市区
+ @param province 省
+ @param city 市
+ @param district 市
  @param position 详细位置信息
  */
-- (void)getLocationLatitude:(double)latitude longitude:(double)longitude provinceInfo:(NSString *)province position:(NSString *)position;
+- (void)getLocationLatitude:(double)latitude
+                  longitude:(double)longitude
+                   province:(NSString *)province
+                       city:(NSString *)city
+                   district:(NSString *)district
+                   position:(NSString *)position;
 
 @end
 
