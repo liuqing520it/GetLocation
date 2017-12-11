@@ -29,6 +29,7 @@
 		491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432211FDD750900AF225C /* SystemConfiguration.framework */; };
 		491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432231FDD751A00AF225C /* CoreTelephony.framework */; };
 		491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432251FDD754300AF225C /* CoreLocation.framework */; };
+		492842801FDED0000064E52D /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4928427F1FDED0000064E52D /* AMap3D.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		491432211FDD750900AF225C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		491432231FDD751A00AF225C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		491432251FDD754300AF225C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4928427F1FDED0000064E52D /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 		4914320A1FDD741E00AF225C /* MapSDK */ = {
 			isa = PBXGroup;
 			children = (
+				4928427F1FDED0000064E52D /* AMap3D.bundle */,
 				4914320B1FDD741E00AF225C /* AMapSearch */,
 				4914320D1FDD741E00AF225C /* AMapFoundation */,
 				4914320F1FDD741E00AF225C /* AMap3DMap */,
@@ -312,7 +315,7 @@
 				TargetAttributes = {
 					491431D01FDC189200AF225C = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					491431EE1FDC1A4E00AF225C = {
 						CreatedOnToolsVersion = 9.1;
@@ -347,6 +350,7 @@
 				491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
+				492842801FDED0000064E52D /* AMap3D.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,8 +520,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NBL9PB7UR2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
@@ -527,6 +532,7 @@
 				INFOPLIST_FILE = GetLocationInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = liuqing.GetLocationInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -538,8 +544,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NBL9PB7UR2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
@@ -549,6 +556,7 @@
 				INFOPLIST_FILE = GetLocationInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = liuqing.GetLocationInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
