@@ -17,9 +17,6 @@
 		491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */; };
-		491432111FDD741E00AF225C /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914320C1FDD741E00AF225C /* AMapSearchKit.framework */; };
-		491432121FDD741E00AF225C /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914320E1FDD741E00AF225C /* AMapFoundationKit.framework */; };
-		491432131FDD741E00AF225C /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432101FDD741E00AF225C /* MAMapKit.framework */; };
 		491432161FDD748400AF225C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432151FDD747500AF225C /* libc++.tbd */; };
 		491432181FDD749100AF225C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432171FDD749100AF225C /* libz.tbd */; };
 		4914321A1FDD749E00AF225C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432191FDD749E00AF225C /* libstdc++.6.0.9.tbd */; };
@@ -29,7 +26,13 @@
 		491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432211FDD750900AF225C /* SystemConfiguration.framework */; };
 		491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432231FDD751A00AF225C /* CoreTelephony.framework */; };
 		491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432251FDD754300AF225C /* CoreLocation.framework */; };
-		492842801FDED0000064E52D /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4928427F1FDED0000064E52D /* AMap3D.bundle */; };
+		49703FAB1FDFADC6004F349B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA51FDFADC6004F349B /* AMapSearchKit.framework */; };
+		49703FAC1FDFADC6004F349B /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA71FDFADC6004F349B /* AMapFoundationKit.framework */; };
+		49703FAD1FDFADC6004F349B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA91FDFADC6004F349B /* MAMapKit.framework */; };
+		49703FAE1FDFADC6004F349B /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49703FAA1FDFADC6004F349B /* AMap3D.bundle */; };
+		49703FB21FDFAF20004F349B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49703FB11FDFAF1F004F349B /* AMap.bundle */; };
+		49703FB51FDFB9A1004F349B /* LQMapPoiTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */; };
+		49703FB61FDFB9A1004F349B /* LQMapPoiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,9 +77,6 @@
 		491432021FDC26B800AF225C /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		491432041FDC26B900AF225C /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		491432061FDC26BB00AF225C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		4914320C1FDD741E00AF225C /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
-		4914320E1FDD741E00AF225C /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
-		491432101FDD741E00AF225C /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		491432151FDD747500AF225C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		491432171FDD749100AF225C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		491432191FDD749E00AF225C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
@@ -86,7 +86,13 @@
 		491432211FDD750900AF225C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		491432231FDD751A00AF225C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		491432251FDD754300AF225C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4928427F1FDED0000064E52D /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
+		49703FA51FDFADC6004F349B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		49703FA71FDFADC6004F349B /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		49703FA91FDFADC6004F349B /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		49703FAA1FDFADC6004F349B /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
+		49703FB11FDFAF1F004F349B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = GetLocationInfo/MapSDK/AMap.bundle; sourceTree = SOURCE_ROOT; };
+		49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQMapPoiTableView.h; sourceTree = "<group>"; };
+		49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQMapPoiTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49703FAB1FDFADC6004F349B /* AMapSearchKit.framework in Frameworks */,
+				49703FAC1FDFADC6004F349B /* AMapFoundationKit.framework in Frameworks */,
 				491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */,
 				491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */,
 				491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */,
@@ -102,10 +110,8 @@
 				4914321C1FDD74BE00AF225C /* GLKit.framework in Frameworks */,
 				491432161FDD748400AF225C /* libc++.tbd in Frameworks */,
 				491432181FDD749100AF225C /* libz.tbd in Frameworks */,
-				491432111FDD741E00AF225C /* AMapSearchKit.framework in Frameworks */,
-				491432121FDD741E00AF225C /* AMapFoundationKit.framework in Frameworks */,
-				491432131FDD741E00AF225C /* MAMapKit.framework in Frameworks */,
 				4914321A1FDD749E00AF225C /* libstdc++.6.0.9.tbd in Frameworks */,
+				49703FAD1FDFADC6004F349B /* MAMapKit.framework in Frameworks */,
 				491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,7 +148,7 @@
 		491431D31FDC189200AF225C /* GetLocationInfo */ = {
 			isa = PBXGroup;
 			children = (
-				4914320A1FDD741E00AF225C /* MapSDK */,
+				49703FA31FDFADC6004F349B /* MapSDK */,
 				491431D41FDC189200AF225C /* AppDelegate.h */,
 				491431D51FDC189200AF225C /* AppDelegate.m */,
 				491431D71FDC189200AF225C /* ViewController.h */,
@@ -162,6 +168,8 @@
 				491432001FDC26A200AF225C /* MapSDK */,
 				491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */,
 				491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */,
+				49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */,
+				49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */,
 				491431F21FDC1A4E00AF225C /* Info.plist */,
 			);
 			path = LocationInfoFramework;
@@ -201,42 +209,6 @@
 			path = AMap3DMap;
 			sourceTree = "<group>";
 		};
-		4914320A1FDD741E00AF225C /* MapSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4928427F1FDED0000064E52D /* AMap3D.bundle */,
-				4914320B1FDD741E00AF225C /* AMapSearch */,
-				4914320D1FDD741E00AF225C /* AMapFoundation */,
-				4914320F1FDD741E00AF225C /* AMap3DMap */,
-			);
-			name = MapSDK;
-			path = LocationInfoFramework/MapSDK;
-			sourceTree = SOURCE_ROOT;
-		};
-		4914320B1FDD741E00AF225C /* AMapSearch */ = {
-			isa = PBXGroup;
-			children = (
-				4914320C1FDD741E00AF225C /* AMapSearchKit.framework */,
-			);
-			path = AMapSearch;
-			sourceTree = "<group>";
-		};
-		4914320D1FDD741E00AF225C /* AMapFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				4914320E1FDD741E00AF225C /* AMapFoundationKit.framework */,
-			);
-			path = AMapFoundation;
-			sourceTree = "<group>";
-		};
-		4914320F1FDD741E00AF225C /* AMap3DMap */ = {
-			isa = PBXGroup;
-			children = (
-				491432101FDD741E00AF225C /* MAMapKit.framework */,
-			);
-			path = AMap3DMap;
-			sourceTree = "<group>";
-		};
 		491432141FDD747500AF225C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +225,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		49703FA31FDFADC6004F349B /* MapSDK */ = {
+			isa = PBXGroup;
+			children = (
+				49703FB11FDFAF1F004F349B /* AMap.bundle */,
+				49703FA41FDFADC6004F349B /* AMapSearch */,
+				49703FA61FDFADC6004F349B /* AMapFoundation */,
+				49703FA81FDFADC6004F349B /* AMap3DMap */,
+				49703FAA1FDFADC6004F349B /* AMap3D.bundle */,
+			);
+			name = MapSDK;
+			path = LocationInfoFramework/MapSDK;
+			sourceTree = SOURCE_ROOT;
+		};
+		49703FA41FDFADC6004F349B /* AMapSearch */ = {
+			isa = PBXGroup;
+			children = (
+				49703FA51FDFADC6004F349B /* AMapSearchKit.framework */,
+			);
+			path = AMapSearch;
+			sourceTree = "<group>";
+		};
+		49703FA61FDFADC6004F349B /* AMapFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				49703FA71FDFADC6004F349B /* AMapFoundationKit.framework */,
+			);
+			path = AMapFoundation;
+			sourceTree = "<group>";
+		};
+		49703FA81FDFADC6004F349B /* AMap3DMap */ = {
+			isa = PBXGroup;
+			children = (
+				49703FA91FDFADC6004F349B /* MAMapKit.framework */,
+			);
+			path = AMap3DMap;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -261,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */,
+				49703FB51FDFB9A1004F349B /* LQMapPoiTableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,10 +357,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49703FB21FDFAF20004F349B /* AMap.bundle in Resources */,
 				491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
-				492842801FDED0000064E52D /* AMap3D.bundle in Resources */,
+				49703FAE1FDFADC6004F349B /* AMap3D.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49703FB61FDFB9A1004F349B /* LQMapPoiTableView.m in Sources */,
 				491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

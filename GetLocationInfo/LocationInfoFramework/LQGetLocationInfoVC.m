@@ -7,6 +7,7 @@
 //
 
 #import "LQGetLocationInfoVC.h"
+#import "LQMapPoiTableView.m"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
@@ -21,11 +22,18 @@
 /** 搜索结果tableViewcell的高度 */
 #define CELL_HEIGHT                     55.f
 /** 搜索结果每次展示几个 */
-#define CELL_COUNT                      5
+#define CELL_COUNT                      6
 
-@interface LQGetLocationInfoVC () <MAMapViewDelegate>
+@interface LQGetLocationInfoVC () <UISearchResultsUpdating,
+                                    MAMapViewDelegate,
+                                    AMapSearchDelegate,
+                                    LQMapPoiTableViewDelegate>
+
+@property(nonatomic,strong)UISearchController *searchController;
 /** 地图view 展示地图信息 */
 @property(nonatomic,strong)MAMapView *mapView;
+/** 地图下面展示的 结果信息 */
+@property(nonatomic,strong)LQMapPoiTableView * mapPoiView;
 /** 搜索类 */
 @property(nonatomic,strong)AMapSearchAPI *searchAPI;
 /** 回到定位点图标 */
@@ -52,7 +60,6 @@
     if (self = [super init]){
         ///APIkey。设置key，需要绑定对应的bundle id。
         [AMapServices sharedServices].apiKey = apiKey;
-        
     }
     return self;
 }
@@ -92,6 +99,14 @@
     [confirmBtn addTarget:self action:@selector(confirmClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:confirmBtn];
     
+    if (@available(iOS 11.0, *)) {
+        self.navigationItem.searchController = self.searchController;
+    } else {
+        
+    }
+    ///确保当用户从 UISearchController 跳转到另一个 view controller 时 search bar 不再显示。
+    self.definesPresentationContext = YES;
+    
 }
 
 //取消点击
@@ -113,8 +128,10 @@
     [self.view addSubview:self.mapView];
     [self.mapView addSubview:self.locationButton];
     [self.mapView addSubview:self.centerMaker];
+    
+    [self.view addSubview:self.mapPoiView];
+    self.searchAPI.delegate = self.mapPoiView;
 }
-
 
 - (void)actionLocation{
     [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
@@ -123,13 +140,23 @@
 
 #pragma mark lazy load
 
+- (UISearchController *)searchController{
+    if (!_searchController) {
+        _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+        _searchController.searchResultsUpdater = self;
+        _searchController.searchBar.placeholder = @"搜索地点";
+        _searchController.searchBar.tintColor = [UIColor greenColor];
+    }
+    return _searchController;
+}
+
 - (MAMapView *)mapView{
     if (!_mapView) {
-        _mapView = [[MAMapView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - CELL_HEIGHT * CELL_COUNT)];
+        _mapView = [[MAMapView alloc]initWithFrame:CGRectMake(0, 52 + NAVANDSTATUSHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - (52 + NAVANDSTATUSHEIGHT) - CELL_HEIGHT * CELL_COUNT)];
         _mapView.delegate = self;
         _mapView.showsCompass = YES;//显示罗盘
         _mapView.showsScale = YES;//显示缩放比例
-        _mapView.scaleOrigin = CGPointMake(_mapView.frame.origin.x + 10, _mapView.frame.size.height - 80);//比例尺原点位置
+        _mapView.scaleOrigin = CGPointMake(_mapView.frame.origin.x + 10, _mapView.frame.size.height - 30);//比例尺原点位置
         _mapView.showsLabels = YES;
         _mapView.zoomLevel = 15;
         _mapView.showsUserLocation = YES;//是否显示用户位置
@@ -138,12 +165,28 @@
     return _mapView;
 }
 
+- (LQMapPoiTableView *)mapPoiView{
+    if (!_mapPoiView) {
+        _mapPoiView = [[LQMapPoiTableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mapView.frame), SCREEN_WIDTH, CELL_HEIGHT * CELL_COUNT)];
+        _mapPoiView.delegate = self;
+        _mapPoiView.backgroundColor = [UIColor redColor];
+    }
+    return _mapPoiView;
+}
+
+- (AMapSearchAPI *)searchAPI{
+    if (!_searchAPI) {
+        _searchAPI = [[AMapSearchAPI alloc]init];
+    }
+    return _searchAPI;
+}
+
 - (UIImageView *)centerMaker{
     if (!_centerMaker) {
         UIImage *image = [UIImage imageNamed:@"AMap3D.bundle/redPin_lift"];
         _centerMaker = [[UIImageView alloc]initWithImage:image];
         [_centerMaker setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-        _centerMaker.center =  CGPointMake(SCREEN_WIDTH / 2, CGRectGetHeight(_mapView.bounds)* 0.5f - SEARCHBAR_HEIGHT/2.f - 10.f);
+        _centerMaker.center =  CGPointMake(SCREEN_WIDTH / 2, CGRectGetHeight(_mapView.bounds)*0.5f);
     }
     return _centerMaker;
 }
@@ -161,87 +204,119 @@
     return _locationButton;
 }
 
+#pragma mark - UISearchViewControllerDelegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSLog(@"------");
+}
+
+#pragma mark - MapPoiTableViewDelegate
+- (void)pullRefresh{
+    self.searchPage = 1;
+    AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    [self searchPoiByAMapGeoPoint:point];
+}
+
+// 加载更多列表数据
+- (void)loadMore{
+    self.searchPage++;
+    AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    [self searchPoiByAMapGeoPoint:point];
+}
+
+// 将地图中心移到所选的POI位置上
+- (void)setMapCenterWithPOI:(AMapPOI *)point isLocateImageShouldChange:(BOOL)isLocateImageShouldChange{
+    self.isMapViewRegionChangedFromTableView = YES;
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(point.location.latitude, point.location.longitude);
+    [self.mapView setCenterCoordinate:location animated:YES];
+    [self checkThePinIsInCurrentLocationCenter];
+}
+
+// 设置当前位置所在城市
+- (void)setCurrentCity:(NSString *)city{
+//    self.searchResultTableView.city = city;
+}
 
 #pragma mark - MAMapViewDelegate
 
-//- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
-//{
-//    // 首次定位
-//    if (updatingLocation && !self.isFirstLocated) {
-//        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude)];
-//        self.isFirstLocated = YES;
-//    }
-//}
-//
-//- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-//    if (!self.isMapViewRegionChangedFromTableView && self.isFirstLocated) {
-//        AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
-//        [self searchReGeocodeWithAMapGeoPoint:point];
-//        [self searchPoiByAMapGeoPoint:point];
-//        // 范围移动时当前页面数重置
-//        self.searchPage = 1;
-//        [self checkThePinIsInCurrentLocationCenter];
-//    }
-//    
-//    self.isMapViewRegionChangedFromTableView = NO;
-//}
-//
-//#pragma mark locationButton 的选中状态改变 根据 大头针是否在定位点
-//
-//- (void)checkThePinIsInCurrentLocationCenter{
-//    NSString *mapViewLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.latitude];
-//    NSString *mapViewLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.longitude];
-//    NSString *pointLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.latitude];
-//    NSString *pointLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.longitude];
-//    
-//    if ([mapViewLatitude isEqualToString:pointLatitude] && [mapViewLongitude isEqualToString:pointLongitude]) {
-//        self.locationButton.selected = YES;
-//    }
-//    else{
-//        self.locationButton.selected = NO;
-//    }
-//}
-//
-//
-//
-//- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
-//{
-//    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
-//        static NSString *reuseIndetifier = @"anntationReuseIndetifier";
-//        MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
-//        if (!annotationView) {
-//            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
-//            annotationView.image = [UIImage imageNamed:@"msg_location"];
-//            annotationView.centerOffset = CGPointMake(0, -18);
-//        }
-//        return annotationView;
-//    }
-//    return nil;
-//}
-//
-//// 搜索逆向地理编码-AMapGeoPoint
-//- (void)searchReGeocodeWithAMapGeoPoint:(AMapGeoPoint *)location
-//{
-//    AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
-//    regeo.location = location;
-//    // 返回扩展信息
-//    regeo.requireExtension = YES;
-//    [self.searchAPI AMapReGoecodeSearch:regeo];
-//}
-//
-//// 搜索中心点坐标周围的POI-AMapGeoPoint
-//- (void)searchPoiByAMapGeoPoint:(AMapGeoPoint *)location
-//{
-//    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
-//    request.location = location;
-//    // 搜索半径
-//    request.radius = 1000;
-//    // 搜索结果排序
-//    request.sortrule = 1;
-//    // 当前页数
-//    request.page = self.searchPage;
-//    [self.searchAPI AMapPOIAroundSearch:request];
-//}
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    // 首次定位
+    if (updatingLocation && !self.isFirstLocated) {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude)];
+        self.isFirstLocated = YES;
+    }
+}
+
+- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    if (!self.isMapViewRegionChangedFromTableView && self.isFirstLocated) {
+        AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+        [self searchReGeocodeWithAMapGeoPoint:point];
+        [self searchPoiByAMapGeoPoint:point];
+        // 范围移动时当前页面数重置
+        self.searchPage = 1;
+        [self checkThePinIsInCurrentLocationCenter];
+    }
+    
+    self.isMapViewRegionChangedFromTableView = NO;
+}
+
+#pragma mark locationButton 的选中状态改变 根据 大头针是否在定位点
+
+- (void)checkThePinIsInCurrentLocationCenter{
+    NSString *mapViewLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.latitude];
+    NSString *mapViewLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.longitude];
+    NSString *pointLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.latitude];
+    NSString *pointLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.longitude];
+    
+    if ([mapViewLatitude isEqualToString:pointLatitude] && [mapViewLongitude isEqualToString:pointLongitude]) {
+        self.locationButton.selected = YES;
+    }
+    else{
+        self.locationButton.selected = NO;
+    }
+}
+
+
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
+        static NSString *reuseIndetifier = @"anntationReuseIndetifier";
+        MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        if (!annotationView) {
+            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
+            annotationView.image = [UIImage imageNamed:@"msg_location"];
+            //annotationView.centerOffset = CGPointMake(0, -18);
+        }
+        return annotationView;
+    }
+    return nil;
+}
+
+// 搜索逆向地理编码-AMapGeoPoint
+- (void)searchReGeocodeWithAMapGeoPoint:(AMapGeoPoint *)location
+{
+    AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
+    regeo.location = location;
+    // 返回扩展信息
+    regeo.requireExtension = YES;
+    [self.searchAPI AMapReGoecodeSearch:regeo];
+}
+
+// 搜索中心点坐标周围的POI-AMapGeoPoint
+- (void)searchPoiByAMapGeoPoint:(AMapGeoPoint *)location
+{
+    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
+    request.location = location;
+    // 搜索半径
+    request.radius = 1000;
+    // 搜索结果排序
+    request.sortrule = 1;
+    // 当前页数
+    request.page = self.searchPage;
+    [self.searchAPI AMapPOIAroundSearch:request];
+}
 
 
 
