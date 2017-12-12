@@ -11,7 +11,6 @@
 		491431D91FDC189200AF225C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431D81FDC189200AF225C /* ViewController.m */; };
 		491431DC1FDC189200AF225C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491431DA1FDC189200AF225C /* Main.storyboard */; };
 		491431DE1FDC189200AF225C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491431DD1FDC189200AF225C /* Assets.xcassets */; };
-		491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491431DF1FDC189200AF225C /* LaunchScreen.storyboard */; };
 		491431E41FDC189200AF225C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431E31FDC189200AF225C /* main.m */; };
 		491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; };
 		491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -26,6 +25,8 @@
 		491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432211FDD750900AF225C /* SystemConfiguration.framework */; };
 		491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432231FDD751A00AF225C /* CoreTelephony.framework */; };
 		491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432251FDD754300AF225C /* CoreLocation.framework */; };
+		496ACF241FE01D9F00EEAC77 /* LQSearchResultManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 496ACF221FE01D9F00EEAC77 /* LQSearchResultManager.h */; };
+		496ACF251FE01D9F00EEAC77 /* LQSearchResultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 496ACF231FE01D9F00EEAC77 /* LQSearchResultManager.m */; };
 		49703FAB1FDFADC6004F349B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA51FDFADC6004F349B /* AMapSearchKit.framework */; };
 		49703FAC1FDFADC6004F349B /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA71FDFADC6004F349B /* AMapFoundationKit.framework */; };
 		49703FAD1FDFADC6004F349B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49703FA91FDFADC6004F349B /* MAMapKit.framework */; };
@@ -67,7 +68,6 @@
 		491431D81FDC189200AF225C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		491431DB1FDC189200AF225C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		491431DD1FDC189200AF225C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		491431E01FDC189200AF225C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491431E21FDC189200AF225C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491431E31FDC189200AF225C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationInfoFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +86,8 @@
 		491432211FDD750900AF225C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		491432231FDD751A00AF225C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		491432251FDD754300AF225C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		496ACF221FE01D9F00EEAC77 /* LQSearchResultManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSearchResultManager.h; sourceTree = "<group>"; };
+		496ACF231FE01D9F00EEAC77 /* LQSearchResultManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSearchResultManager.m; sourceTree = "<group>"; };
 		49703FA51FDFADC6004F349B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		49703FA71FDFADC6004F349B /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		49703FA91FDFADC6004F349B /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
@@ -155,7 +157,6 @@
 				491431D81FDC189200AF225C /* ViewController.m */,
 				491431DA1FDC189200AF225C /* Main.storyboard */,
 				491431DD1FDC189200AF225C /* Assets.xcassets */,
-				491431DF1FDC189200AF225C /* LaunchScreen.storyboard */,
 				491431E21FDC189200AF225C /* Info.plist */,
 				491431E31FDC189200AF225C /* main.m */,
 			);
@@ -168,6 +169,8 @@
 				491432001FDC26A200AF225C /* MapSDK */,
 				491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */,
 				491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */,
+				496ACF221FE01D9F00EEAC77 /* LQSearchResultManager.h */,
+				496ACF231FE01D9F00EEAC77 /* LQSearchResultManager.m */,
 				49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */,
 				49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */,
 				491431F21FDC1A4E00AF225C /* Info.plist */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */,
+				496ACF241FE01D9F00EEAC77 /* LQSearchResultManager.h in Headers */,
 				49703FB51FDFB9A1004F349B /* LQMapPoiTableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49703FB21FDFAF20004F349B /* AMap.bundle in Resources */,
-				491431E11FDC189200AF225C /* LaunchScreen.storyboard in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
 				49703FAE1FDFADC6004F349B /* AMap3D.bundle in Resources */,
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49703FB61FDFB9A1004F349B /* LQMapPoiTableView.m in Sources */,
+				496ACF251FE01D9F00EEAC77 /* LQSearchResultManager.m in Sources */,
 				491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,14 +415,6 @@
 				491431DB1FDC189200AF225C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		491431DF1FDC189200AF225C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				491431E01FDC189200AF225C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -532,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NBL9PB7UR2;
@@ -556,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NBL9PB7UR2;
