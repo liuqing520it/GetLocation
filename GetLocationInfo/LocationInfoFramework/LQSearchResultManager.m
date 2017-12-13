@@ -24,13 +24,6 @@
 
 @implementation LQSearchResultManager
 
-- (instancetype)init{
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
-
 #pragma mark - lazy load
 
 - (NSMutableArray *) searchResultArray
@@ -48,7 +41,6 @@
     }
     return _searchAPI;
 }
-
 
 #pragma mark - 内部控制方法
 
@@ -130,25 +122,17 @@
     }
     else{
         [self.searchResultArray removeAllObjects];
-        // 刷新后TableView返回顶部
-        //[self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
     // 刷新完成,没有数据时不显示footer
-    if (response.pois.count == 0) {
-        //[self.tableView.infiniteScrollingView stopAnimating];
-    }
-    else {
-        
+    if (response.pois.count){
         // 添加数据并刷新TableView
         [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
             [self.searchResultArray addObject:obj];
         }];
-        
         if([self.delegate respondsToSelector:@selector(didGetLocationInfo)]){
             [self.delegate didGetLocationInfo];
         }
-//        [self.tableView.infiniteScrollingView stopAnimating];
     }
-//    [self.tableView reloadData];
+
 }
 @end

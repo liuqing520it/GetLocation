@@ -43,13 +43,13 @@
 @property(nonatomic,strong)LQMapPoiTableView * mapPoiView;
 /** 搜索类 */
 @property(nonatomic,strong)AMapSearchAPI *searchAPI;
-
+/** 由于点击searchBar要将整体上移,移动self.view不起作用,迫不得已添加一个contentView在view上移动contentView */
 @property(nonatomic,strong)UIView * mapContentView;
 /** 回到定位点图标 */
 @property(nonatomic,strong)UIImageView *centerMaker;
 /** 定位按钮 */
 @property(nonatomic,strong)UIButton *locationButton;
-/**  */
+/** 记录是否是底部table使得地图坐标发生改变 */
 @property(nonatomic,assign)BOOL isMapViewRegionChangedFromTableView;
 /** 记录第一次定位 */
 @property(nonatomic,assign)BOOL isFirstLocated;
@@ -86,10 +86,9 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
-
 /**
  设置状态栏
- @return 黑底白色
+ @return 黑底白色 需要设置 navigationBar.barStyle = UIBarStyleBlack;才会起作用
  */
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -136,8 +135,7 @@
     }
     ///确保当用户从 UISearchController 跳转到另一个 view controller 时 search bar 不再显示。
     self.definesPresentationContext = YES;
-    
-    //设置导航栏颜色
+        //设置导航栏颜色
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;//只有指定了barStyle状态栏才会相应改变
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
 }
@@ -269,12 +267,13 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
     self.resultManager.searchKeyword = searchController.searchBar.text;
     
-    /// 当
+    /// 当searchBar活跃时  将整体视图上移 46
     if (self.searchController.active) {
         [UIView animateWithDuration:0.25 animations:^{
             self.mapContentView.transform = CGAffineTransformMakeTranslation(0, -46);
         }];
     }else{
+        ///不活跃状态回复原状
         [UIView animateWithDuration:0.25 animations:^{
             self.mapContentView.transform = CGAffineTransformIdentity;
         }];
@@ -282,19 +281,19 @@
 }
 
 #pragma mark - LQSearchResultManagerDelegate
-
+///选中了搜索结果的某一行
 - (void)didSelectedLocationWithLocation:(AMapPOI *)poi{
     self.searchController.active = NO;
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(poi.location.latitude,poi.location.longitude) animated:NO];
-//    self.searchBar.text = @"";
 }
 
+///获取到了搜索关键字 位置信息
 - (void)didGetLocationInfo{
     [self.searchResultTableViewController.tableView reloadData];
 }
 
 #pragma mark - MapPoiTableViewDelegate
-
+///下拉刷新
 - (void)pullRefresh{
     self.searchPage = 1;
     [self searchPoiByAMapGeoPoint];
