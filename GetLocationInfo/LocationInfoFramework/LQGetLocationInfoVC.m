@@ -43,6 +43,8 @@
 @property(nonatomic,strong)LQMapPoiTableView * mapPoiView;
 /** 搜索类 */
 @property(nonatomic,strong)AMapSearchAPI *searchAPI;
+
+@property(nonatomic,strong)UIView * mapContentView;
 /** 回到定位点图标 */
 @property(nonatomic,strong)UIImageView *centerMaker;
 /** 定位按钮 */
@@ -156,11 +158,12 @@
 #pragma mark - addSubView
 
 - (void)configUI{
-    [self.view addSubview:self.mapView];
+    [self.view addSubview:self.mapContentView];
+    [self.mapContentView addSubview:self.mapView];
     [self.mapView addSubview:self.locationButton];
     [self.mapView addSubview:self.centerMaker];
     
-    [self.view addSubview:self.mapPoiView];
+    [self.mapContentView addSubview:self.mapPoiView];
     self.searchAPI.delegate = self.mapPoiView;
 }
 
@@ -200,13 +203,20 @@
     return _resultManager;
 }
 
+- (UIView *)mapContentView{
+    if (!_mapContentView) {
+        _mapContentView = [[UIView alloc]initWithFrame:self.view.bounds];
+    }
+    return _mapContentView;
+}
+
 - (MAMapView *)mapView{
     if (!_mapView) {
         _mapView = [[MAMapView alloc]initWithFrame:CGRectMake(0, 52 + NAVANDSTATUSHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - (52 + NAVANDSTATUSHEIGHT) - CELL_HEIGHT * CELL_COUNT)];
         _mapView.delegate = self;
         _mapView.showsCompass = YES;//显示罗盘
         _mapView.showsScale = YES;//显示缩放比例
-        _mapView.scaleOrigin = CGPointMake(_mapView.frame.origin.x + 10, _mapView.frame.size.height - 30);//比例尺原点位置
+        _mapView.scaleOrigin = CGPointMake(10, 10);//比例尺原点位置
         _mapView.showsLabels = YES;
         _mapView.zoomLevel = 15;
         _mapView.showsUserLocation = YES;//是否显示用户位置
@@ -258,6 +268,17 @@
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
     self.resultManager.searchKeyword = searchController.searchBar.text;
+    
+    /// 当
+    if (self.searchController.active) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.mapContentView.transform = CGAffineTransformMakeTranslation(0, -46);
+        }];
+    }else{
+        [UIView animateWithDuration:0.25 animations:^{
+            self.mapContentView.transform = CGAffineTransformIdentity;
+        }];
+    }
 }
 
 #pragma mark - LQSearchResultManagerDelegate
@@ -276,15 +297,13 @@
 
 - (void)pullRefresh{
     self.searchPage = 1;
-    AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
-    [self searchPoiByAMapGeoPoint:point];
+    [self searchPoiByAMapGeoPoint];
 }
 
 // 加载更多列表数据
 - (void)loadMore{
     self.searchPage++;
-    AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
-    [self searchPoiByAMapGeoPoint:point];
+    [self searchPoiByAMapGeoPoint];
 }
 
 // 将地图中心移到所选的POI位置上
@@ -307,15 +326,21 @@
     // 首次定位
     if (updatingLocation && !self.isFirstLocated) {
         [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude)];
+        
+        [self searchReGeocodeWithAMapGeoPoint];
+        
+        [self searchPoiByAMapGeoPoint];
+        
         self.isFirstLocated = YES;
     }
 }
 
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     if (!self.isMapViewRegionChangedFromTableView && self.isFirstLocated) {
-        AMapGeoPoint *point = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
-        [self searchReGeocodeWithAMapGeoPoint:point];
-        [self searchPoiByAMapGeoPoint:point];
+        
+        [self searchReGeocodeWithAMapGeoPoint];
+
+        [self searchPoiByAMapGeoPoint];
         // 范围移动时当前页面数重置
         self.searchPage = 1;
         [self checkThePinIsInCurrentLocationCenter];
@@ -358,8 +383,10 @@
 }
 
 // 搜索逆向地理编码-AMapGeoPoint
-- (void)searchReGeocodeWithAMapGeoPoint:(AMapGeoPoint *)location
+- (void)searchReGeocodeWithAMapGeoPoint
 {
+    AMapGeoPoint *location = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    
     AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
     regeo.location = location;
     // 返回扩展信息
@@ -368,8 +395,10 @@
 }
 
 // 搜索中心点坐标周围的POI-AMapGeoPoint
-- (void)searchPoiByAMapGeoPoint:(AMapGeoPoint *)location
+- (void)searchPoiByAMapGeoPoint
 {
+     AMapGeoPoint *location = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    
     AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
     request.location = location;
     // 搜索半径
@@ -381,36 +410,6 @@
     [self.searchAPI AMapPOIAroundSearch:request];
 }
 
-
-
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
