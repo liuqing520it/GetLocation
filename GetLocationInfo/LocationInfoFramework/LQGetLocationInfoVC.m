@@ -81,6 +81,16 @@
     ///添加子控件
     [self configUI];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+
+/**
+ 设置状态栏
+ @return 黑底白色
+ */
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - 内部控制方法
@@ -90,30 +100,44 @@
  */
 - (void)setUpNavigationBar{
     self.navigationItem.title = @"位置";
-//    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     ///取消按钮
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [cancelBtn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:cancelBtn];
     
     ///确认按钮
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [confirmBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:[UIColor colorWithRed:0.4475560784 green:0.8532296419 blue:0.1005850509 alpha:1.0]forState:UIControlStateNormal];
+    confirmBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [confirmBtn addTarget:self action:@selector(confirmClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:confirmBtn];
     
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = self.searchController;
+        UISearchBar *searchBar = self.searchController.searchBar;
+        searchBar.tintColor = [UIColor whiteColor];
+        searchBar.barTintColor = [UIColor whiteColor];
+        UITextField *textfield = (UITextField *)[searchBar valueForKey:@"searchField"];
+        textfield.textColor = [UIColor blackColor];
+        UIView *backgroundView = textfield.subviews.firstObject;
+        backgroundView.backgroundColor = [UIColor whiteColor];
+        backgroundView.layer.cornerRadius = 10;
+        backgroundView.clipsToBounds = true;
     } else {
         
     }
     ///确保当用户从 UISearchController 跳转到另一个 view controller 时 search bar 不再显示。
     self.definesPresentationContext = YES;
     
+    //设置导航栏颜色
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;//只有指定了barStyle状态栏才会相应改变
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
 }
 
 //取消点击
@@ -152,7 +176,8 @@
         _searchController = [[UISearchController alloc]initWithSearchResultsController:self.searchResultTableViewController];
         _searchController.searchResultsUpdater = self;
         _searchController.searchBar.placeholder = @"搜索地点";
-        _searchController.searchBar.tintColor = [UIColor greenColor];
+        _searchController.searchBar.barTintColor = [UIColor greenColor];
+        [_searchController.searchBar sizeToFit];
     }
     return _searchController;
 }
