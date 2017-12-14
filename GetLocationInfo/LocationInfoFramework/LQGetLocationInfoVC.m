@@ -174,7 +174,6 @@
         _searchController = [[UISearchController alloc]initWithSearchResultsController:self.searchResultTableViewController];
         _searchController.searchResultsUpdater = self;
         _searchController.searchBar.placeholder = @"搜索地点";
-        _searchController.searchBar.barTintColor = [UIColor greenColor];
         [_searchController.searchBar sizeToFit];
     }
     return _searchController;
