@@ -7,6 +7,7 @@
 //
 
 #import "LQMapPoiTableView.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface LQMapPoiTableView()<UITableViewDelegate,UITableViewDataSource>
 /** TableView */
@@ -38,6 +39,10 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.refreshControl = self.refreshControl;
+        __weak typeof (self)weakSelf = self;
+        [_tableView addInfiniteScrollingWithActionHandler:^{
+            [weakSelf loadMoreData];
+        }];
     }
     return _tableView;
 }
@@ -171,7 +176,10 @@
         }
     }
     
+    ///下拉刷新停止
     [self.tableView.refreshControl endRefreshing];
+    ///加拉加载停止
+    [self.tableView.infiniteScrollingView stopAnimating];
     
     // 添加数据并刷新TableView
     [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {

@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "LQGetLocationInfoVC.h"
 
+#import <MapKit/MapKit.h>
+
 @interface ViewController ()
 
 @property(nonatomic,strong)UIButton * pushBtn;

@@ -7,15 +7,14 @@
 //
 
 #import "LQGetLocationInfoVC.h"
-#import "LQMapPoiTableView.m"
-#import "LQSearchResultManager.h"
-
+#import "LQMapPoiTableView.h"
+#import "LQSearchResultTableViewController.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 /** 屏幕宽 */
 #define SCREEN_WIDTH    CGRectGetWidth([UIScreen mainScreen].bounds)
-/** 屏幕高 */
+/*-all_load * 屏幕高 */
 #define SCREEN_HEIGHT   CGRectGetHeight([UIScreen mainScreen].bounds)
 /** 搜索栏高度 */
 #define SEARCHBAR_HEIGHT                44.f
@@ -29,14 +28,12 @@
 @interface LQGetLocationInfoVC () <UISearchResultsUpdating,
                                     MAMapViewDelegate,
                                     AMapSearchDelegate,
-                                    LQSearchResultManagerDelegate,
+                                    LQSearchResultTableViewControllerDelegate,
                                     LQMapPoiTableViewDelegate>
 /** 搜索控制器 */
 @property(nonatomic,strong)UISearchController *searchController;
 /** 搜索结果展示 */
-@property(nonatomic,strong)UITableViewController *searchResultTableViewController;
-/** 搜索结果管理类 */
-@property(nonatomic,strong)LQSearchResultManager * resultManager;
+@property(nonatomic,strong)LQSearchResultTableViewController *searchResultTableViewController;
 /** 地图view 展示地图信息 */
 @property(nonatomic,strong)MAMapView *mapView;
 /** 地图下面展示的 结果信息 */
@@ -183,22 +180,12 @@
     return _searchController;
 }
 
-- (UITableViewController *)searchResultTableViewController{
+- (LQSearchResultTableViewController *)searchResultTableViewController{
     if (!_searchResultTableViewController) {
-        _searchResultTableViewController = [[UITableViewController alloc]initWithStyle:UITableViewStylePlain];
-        _searchResultTableViewController.tableView.delegate = self.resultManager;
-        _searchResultTableViewController.tableView.dataSource = self.resultManager;
-        _searchResultTableViewController.tableView.tableFooterView = [UIView new];
-    }
+        _searchResultTableViewController = [[LQSearchResultTableViewController alloc]initWithStyle:UITableViewStylePlain];
+        _searchResultTableViewController.delegate = self;
+        }
     return _searchResultTableViewController;
-}
-
-- (LQSearchResultManager *)resultManager{
-    if (!_resultManager) {
-        _resultManager = [[LQSearchResultManager alloc]init];
-        _resultManager.delegate = self;
-    }
-    return _resultManager;
 }
 
 - (UIView *)mapContentView{
@@ -265,7 +252,7 @@
 #pragma mark - UISearchViewControllerDelegate
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    self.resultManager.searchKeyword = searchController.searchBar.text;
+    self.searchResultTableViewController.searchKeyword = searchController.searchBar.text;
     
     /// 当searchBar活跃时  将整体视图上移 46
     if (self.searchController.active) {
@@ -285,11 +272,6 @@
 - (void)didSelectedLocationWithLocation:(AMapPOI *)poi{
     self.searchController.active = NO;
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(poi.location.latitude,poi.location.longitude) animated:NO];
-}
-
-///获取到了搜索关键字 位置信息
-- (void)didGetLocationInfo{
-    [self.searchResultTableViewController.tableView reloadData];
 }
 
 #pragma mark - MapPoiTableViewDelegate
@@ -315,7 +297,7 @@
 
 // 设置当前位置所在城市
 - (void)setCurrentCity:(NSString *)city{
-    self.resultManager.city = city;
+    self.searchResultTableViewController.city = city;
 }
 
 #pragma mark - MAMapViewDelegate
