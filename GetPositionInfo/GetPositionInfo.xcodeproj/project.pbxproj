@@ -18,6 +18,10 @@
 		49DAA8C11FE2515F00063664 /* GetPositionInfoVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 49DAA8BF1FE2515F00063664 /* GetPositionInfoVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49DAA8C21FE2515F00063664 /* GetPositionInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAA8C01FE2515F00063664 /* GetPositionInfoVC.m */; };
 		49DAA8C41FE2BED600063664 /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49DAA8C31FE2BED600063664 /* AMap3D.bundle */; };
+		49DAA8C71FE3A6EE00063664 /* SearchResultTableVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 49DAA8C51FE3A6EE00063664 /* SearchResultTableVC.h */; };
+		49DAA8C81FE3A6EE00063664 /* SearchResultTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAA8C61FE3A6EE00063664 /* SearchResultTableVC.m */; };
+		49DAA8CB1FE3A73300063664 /* ShowPositionTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 49DAA8C91FE3A73300063664 /* ShowPositionTableView.h */; };
+		49DAA8CC1FE3A73300063664 /* ShowPositionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAA8CA1FE3A73300063664 /* ShowPositionTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		49DAA8BF1FE2515F00063664 /* GetPositionInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPositionInfoVC.h; sourceTree = "<group>"; };
 		49DAA8C01FE2515F00063664 /* GetPositionInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPositionInfoVC.m; sourceTree = "<group>"; };
 		49DAA8C31FE2BED600063664 /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap3D.bundle; path = ../../GetLocationInfo/LocationInfoFramework/MapSDK/AMap3D.bundle; sourceTree = "<group>"; };
+		49DAA8C51FE3A6EE00063664 /* SearchResultTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultTableVC.h; sourceTree = "<group>"; };
+		49DAA8C61FE3A6EE00063664 /* SearchResultTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableVC.m; sourceTree = "<group>"; };
+		49DAA8C91FE3A73300063664 /* ShowPositionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowPositionTableView.h; sourceTree = "<group>"; };
+		49DAA8CA1FE3A73300063664 /* ShowPositionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowPositionTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,10 @@
 			children = (
 				49DAA8BF1FE2515F00063664 /* GetPositionInfoVC.h */,
 				49DAA8C01FE2515F00063664 /* GetPositionInfoVC.m */,
+				49DAA8C51FE3A6EE00063664 /* SearchResultTableVC.h */,
+				49DAA8C61FE3A6EE00063664 /* SearchResultTableVC.m */,
+				49DAA8C91FE3A73300063664 /* ShowPositionTableView.h */,
+				49DAA8CA1FE3A73300063664 /* ShowPositionTableView.m */,
 				49DAA8B51FE250FD00063664 /* Info.plist */,
 			);
 			path = PostionInfoFramework;
@@ -133,7 +145,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DAA8CB1FE3A73300063664 /* ShowPositionTableView.h in Headers */,
 				49DAA8C11FE2515F00063664 /* GetPositionInfoVC.h in Headers */,
+				49DAA8C71FE3A6EE00063664 /* SearchResultTableVC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DAA8CC1FE3A73300063664 /* ShowPositionTableView.m in Sources */,
+				49DAA8C81FE3A6EE00063664 /* SearchResultTableVC.m in Sources */,
 				49DAA8C21FE2515F00063664 /* GetPositionInfoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

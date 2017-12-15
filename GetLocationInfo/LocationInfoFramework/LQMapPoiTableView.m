@@ -123,9 +123,9 @@
     
     // 将地图中心移到选中的位置
     self.selectedPoi = self.dataSource[indexPath.row];
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(setMapCenterWithPOI:isLocateImageShouldChange:)]) {
-        BOOL isShouldChange = indexPath.row == 0 ? NO : YES;
-        [self.delegate setMapCenterWithPOI:self.selectedPoi isLocateImageShouldChange:isShouldChange];
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(setMapCenterWithPOI:)]) {
+        
+        [self.delegate setMapCenterWithPOI:self.selectedPoi];
     }
 }
 

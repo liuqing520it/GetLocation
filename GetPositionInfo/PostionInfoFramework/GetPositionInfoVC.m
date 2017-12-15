@@ -10,6 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "SearchResultTableVC.h"
+#import "ShowPositionTableView.h"
+
 #define SCREEN_WIDTH        [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT       [UIScreen mainScreen].bounds.size.height
 /** 搜索栏高度 */
@@ -29,13 +32,17 @@
 /** 授权信息 */
 @property(nonatomic,strong)CLLocationManager *locationManager;
 /** 搜索控制器 */
-@property(nonatomic,strong)UISearchController * searchController;
+@property(nonatomic,strong)UISearchController *searchController;
 /** 搜索类 */
-@property(nonatomic,strong)MKLocalSearch * localSearch;
+@property(nonatomic,strong)MKLocalSearch *localSearch;
+/** 搜索结果展示tableView */
+@property(nonatomic,strong)SearchResultTableVC * searchResults;
+/** 展示搜索位置table */
+@property(nonatomic,strong)ShowPositionTableView * showPositionTableView;
 /** 记录第一次定位 */
 @property(nonatomic,assign)BOOL isFirstLocated;
 /** 由于点击searchBar要将整体上移,移动self.view不起作用,迫不得已添加一个contentView在view上移动contentView */
-@property(nonatomic,strong)UIView * mapContentView;
+@property(nonatomic,strong)UIView *mapContentView;
 /** 回到定位点图标 */
 @property(nonatomic,strong)UIImageView *centerMaker;
 /** 定位按钮 */
@@ -108,6 +115,7 @@
  设置导航栏背景色
  */
 - (void)setUpNavigationItem{
+    [self setNeedsStatusBarAppearanceUpdate];
     if (@available(iOS 11.0,*)) {
         self.navigationItem.searchController = self.searchController;
         UISearchBar *searchBar = self.searchController.searchBar;
@@ -130,6 +138,8 @@
     [self.mapContentView addSubview:self.mapView];
     [self.mapView addSubview:self.locationButton];
     [self.mapView addSubview:self.centerMaker];
+    
+    [self.mapContentView addSubview:self.showPositionTableView];
 }
 
 ///回到定位点
@@ -151,7 +161,7 @@
 
 - (MKMapView *)mapView{
     if (!_mapView) {
-        _mapView = [[MKMapView alloc]initWithFrame:CGRectMake(0, 52 + NAVANDSTATUSHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - CELL_HEIGHT * CELL_COUNT)];
+        _mapView = [[MKMapView alloc]initWithFrame:CGRectMake(0, 52 + NAVANDSTATUSHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - CELL_HEIGHT * CELL_COUNT - (52 + NAVANDSTATUSHEIGHT))];
         _mapView.mapType = MKMapTypeMutedStandard;//地图样式
         _mapView.delegate = self;
         _mapView.showsScale = YES;
@@ -181,11 +191,25 @@
 
 - (UISearchController *)searchController{
     if (!_searchController) {
-        _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+        _searchController = [[UISearchController alloc]initWithSearchResultsController:self.searchResults];
         _searchController.searchResultsUpdater = self;
         _searchController.searchBar.placeholder = @"搜索地点";
     }
     return _searchController;
+}
+
+- (SearchResultTableVC *)searchResults{
+    if (!_searchResults) {
+        _searchResults = [[SearchResultTableVC alloc]initWithStyle:UITableViewStylePlain];
+    }
+    return _searchResults;
+}
+
+- (ShowPositionTableView *)showPositionTableView{
+    if (!_showPositionTableView) {
+        _showPositionTableView = [[ShowPositionTableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mapView.frame), SCREEN_WIDTH, CELL_COUNT * CELL_HEIGHT) style:UITableViewStylePlain];
+    }
+    return _showPositionTableView;
 }
 
 - (UIView *)mapContentView{
@@ -257,52 +281,38 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     if (userLocation && !_isFirstLocated) {
-        
-        [self didStartRequestNearPositions];
-        //创建编码对象
-        CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-        //反地理编码
-        [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            if (error!=nil || placemarks.count==0) {
-                return ;
-            }
-            //获取地标
-            CLPlacemark *placemark = [placemarks firstObject];
-            //设置标题
-            userLocation.title = placemark.locality;
-            //设置子标题
-            userLocation.subtitle = placemark.name;
-            
-            //[self fetchNearbyInfo:userLocation.location.coordinate.latitude andT:userLocation.location.coordinate.longitude];
-        }];
+        [self requestNearPositions];
         [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude)];
         _isFirstLocated = YES;
     }
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-    [self didStartRequestNearPositions];
+//    [self.mapView removeFromSuperview];
+//    [self.mapContentView addSubview:mapView];
+    [self requestNearPositions];
 }
 //
 //- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
 //    return nil;
 //}
 
-- (void)didStartRequestNearPositions{
-    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc]init];
-
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.mapView.centerCoordinate.longitude);
-    //创建一个以center为中心，上下各500米，左右500米的区域，但其是一个矩形
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 1000 ,1000 );
+- (void)requestNearPositions{
     
-    requst.region = region;
-    requst.naturalLanguageQuery = @"wuhan";
+    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc]init];
+    requst.region = self.mapView.region;
+    requst.naturalLanguageQuery = @"place";
+    
+    NSLog(@"self.mapView.region-->%f,%f-->%f-->%f",self.mapView.region.center.latitude,self.mapView.region.center.longitude,self.mapView.region.span.latitudeDelta,self.mapView.region.span.longitudeDelta);
     
     self.localSearch = [[MKLocalSearch alloc]initWithRequest:requst];
     
     [self.localSearch startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
         if(!error){
-            NSLog(@"%@",response.mapItems);
+            for (MKMapItem *item in response.mapItems){
+                NSLog(@"name:%@ -- thoroughfare:%@--locality:%@---subLocality:%@",item.placemark.name,item.placemark.thoroughfare,item.placemark.locality,item.placemark.subLocality);
+            }
+            self.showPositionTableView.positionsInfo = [NSArray arrayWithArray:response.mapItems];
         }
         else{
             NSLog(@"<<<<<<----->>>>>>>%@",error.localizedDescription);
@@ -311,9 +321,38 @@
     
 }
 
+- (void)keywordSearchByKeyword:(NSString *)keyword{
+    //创建地理编码
+    CLGeocoder *geocodel = [[CLGeocoder alloc]init];
+    //正向地理编码
+    [geocodel geocodeAddressString:keyword completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if(!error){
+            
+        }
+        else{
+            NSLog(@"%@",error.localizedDescription);
+        }
+        
+    }];
+    
+}
+
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

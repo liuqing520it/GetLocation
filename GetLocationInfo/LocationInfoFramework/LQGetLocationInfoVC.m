@@ -12,6 +12,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+
+
 /** 屏幕宽 */
 #define SCREEN_WIDTH    CGRectGetWidth([UIScreen mainScreen].bounds)
 /*-all_load * 屏幕高 */
@@ -92,47 +94,42 @@
 }
 
 #pragma mark - 内部控制方法
-
 /**
  设置导航栏
  */
 - (void)setUpNavigationBar{
+    ///左侧取消按钮
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelClick)];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:15]} forState:UIControlStateNormal];
+    ///标题
     self.navigationItem.title = @"位置";
-    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    ///取消按钮
-    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [cancelBtn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:cancelBtn];
-    
-    ///确认按钮
-    UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [confirmBtn setTitleColor:[UIColor colorWithRed:0.4475560784 green:0.8532296419 blue:0.1005850509 alpha:1.0]forState:UIControlStateNormal];
-    confirmBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [confirmBtn addTarget:self action:@selector(confirmClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:confirmBtn];
-    
-    if (@available(iOS 11.0, *)) {
+    ///右侧 确定按钮
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirmClick)];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.4475560784 green:0.8532296419 blue:0.1005850509 alpha:1.0],NSFontAttributeName:[UIFont boldSystemFontOfSize:15]} forState:UIControlStateNormal];
+    [self setUpNavigationItem];
+}
+
+/**
+ 设置导航栏背景色
+ */
+- (void)setUpNavigationItem{
+    [self setNeedsStatusBarAppearanceUpdate];
+    if (@available(iOS 11.0,*)) {
         self.navigationItem.searchController = self.searchController;
         UISearchBar *searchBar = self.searchController.searchBar;
         searchBar.tintColor = [UIColor whiteColor];
         searchBar.barTintColor = [UIColor whiteColor];
-        UITextField *textfield = (UITextField *)[searchBar valueForKey:@"searchField"];
+        UITextField *textfield = [searchBar valueForKey:@"searchField"];
         textfield.textColor = [UIColor blackColor];
         UIView *backgroundView = textfield.subviews.firstObject;
         backgroundView.backgroundColor = [UIColor whiteColor];
         backgroundView.layer.cornerRadius = 10;
-        backgroundView.clipsToBounds = true;
-    } else {
-        
+        backgroundView.clipsToBounds = TRUE;
     }
     ///确保当用户从 UISearchController 跳转到另一个 view controller 时 search bar 不再显示。
     self.definesPresentationContext = YES;
-        //设置导航栏颜色
+    //设置导航栏颜色
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;//只有指定了barStyle状态栏才会相应改变
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
 }
@@ -160,12 +157,23 @@
     
     [self.mapContentView addSubview:self.mapPoiView];
     self.searchAPI.delegate = self.mapPoiView;
+    
+    
+    ///绘制中心小蓝点
+    [self renderUserCenterPoint];
+
 }
 
+/** 地图回到用户定位点 */
 - (void)actionLocation{
     [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
 }
 
+
+- (void)renderUserCenterPoint{
+    MAUserLocationRepresentation *r = [[MAUserLocationRepresentation alloc] init];
+    [self.mapView updateUserLocationRepresentation:r];
+}
 
 #pragma mark lazy load
 
@@ -203,8 +211,8 @@
         _mapView.scaleOrigin = CGPointMake(10, 10);//比例尺原点位置
         _mapView.showsLabels = YES;
         _mapView.zoomLevel = 15;
-        _mapView.showsUserLocation = YES;//是否显示用户位置
-        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        _mapView.showsUserLocation = YES;
+        //_mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }
@@ -213,7 +221,6 @@
     if (!_mapPoiView) {
         _mapPoiView = [[LQMapPoiTableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.mapView.frame), SCREEN_WIDTH, CELL_HEIGHT * CELL_COUNT)];
         _mapPoiView.delegate = self;
-        _mapPoiView.backgroundColor = [UIColor redColor];
     }
     return _mapPoiView;
 }
@@ -227,7 +234,7 @@
 
 - (UIImageView *)centerMaker{
     if (!_centerMaker) {
-        UIImage *image = [UIImage imageNamed:@"AMap3D.bundle/redPin_lift"];
+        UIImage *image = [UIImage imageNamed:@"AMap3D.bundle/greenPin"];
         _centerMaker = [[UIImageView alloc]initWithImage:image];
         [_centerMaker setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         _centerMaker.center =  CGPointMake(SCREEN_WIDTH / 2, CGRectGetHeight(_mapView.bounds)*0.5f);
@@ -251,6 +258,7 @@
 #pragma mark - UISearchViewControllerDelegate
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
     self.searchResultTableViewController.searchKeyword = searchController.searchBar.text;
     
     /// 当searchBar活跃时  将整体视图上移 46
@@ -259,7 +267,7 @@
             self.mapContentView.transform = CGAffineTransformMakeTranslation(0, -46);
         }];
     }else{
-        ///不活跃状态回复原状
+        ///不活跃状态恢复原状
         [UIView animateWithDuration:0.25 animations:^{
             self.mapContentView.transform = CGAffineTransformIdentity;
         }];
@@ -287,7 +295,7 @@
 }
 
 // 将地图中心移到所选的POI位置上
-- (void)setMapCenterWithPOI:(AMapPOI *)point isLocateImageShouldChange:(BOOL)isLocateImageShouldChange{
+- (void)setMapCenterWithPOI:(AMapPOI *)point{
     self.isMapViewRegionChangedFromTableView = YES;
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(point.location.latitude, point.location.longitude);
     [self.mapView setCenterCoordinate:location animated:YES];
@@ -349,6 +357,10 @@
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
+    if ([annotation isKindOfClass:[MAUserLocation class]]) {
+        return nil;
+    }
+    
     if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
         static NSString *reuseIndetifier = @"anntationReuseIndetifier";
         MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];

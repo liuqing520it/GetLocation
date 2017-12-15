@@ -154,9 +154,6 @@
         [self.tableView.infiniteScrollingView stopAnimating];
         [self.tableView reloadData];
     }
-    
-   
-    
 }
 
 @end

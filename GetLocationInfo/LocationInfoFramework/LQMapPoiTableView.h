@@ -15,7 +15,7 @@
 ///加载更多 结果
 - (void)loadMore;
 // 将地图中心移到所选的POI位置上
-- (void)setMapCenterWithPOI:(AMapPOI *)point isLocateImageShouldChange:(BOOL)isLocateImageShouldChange;
+- (void)setMapCenterWithPOI:(AMapPOI *)point;
 // 设置当前位置所在城市
 - (void)setCurrentCity:(NSString *)city;
 @end
