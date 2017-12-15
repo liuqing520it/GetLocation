@@ -33,9 +33,9 @@
 		4972996C1FE177E900972078 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299651FE177E900972078 /* AMapSearchKit.framework */; };
 		4972996D1FE177E900972078 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299671FE177E900972078 /* AMapFoundationKit.framework */; };
 		4972996E1FE177E900972078 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299691FE177E900972078 /* MAMapKit.framework */; };
-		4972996F1FE177E900972078 /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4972996A1FE177E900972078 /* AMap3D.bundle */; };
 		4972999C1FE2198F00972078 /* LQSearchResultTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4972999A1FE2198F00972078 /* LQSearchResultTableViewController.h */; };
 		4972999D1FE2198F00972078 /* LQSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4972999B1FE2198F00972078 /* LQSearchResultTableViewController.m */; };
+		49D16CDD1FE4124C00C4A24F /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,9 +98,9 @@
 		497299651FE177E900972078 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		497299671FE177E900972078 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		497299691FE177E900972078 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		4972996A1FE177E900972078 /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
 		4972999A1FE2198F00972078 /* LQSearchResultTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSearchResultTableViewController.h; sourceTree = "<group>"; };
 		4972999B1FE2198F00972078 /* LQSearchResultTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSearchResultTableViewController.m; sourceTree = "<group>"; };
+		49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,11 +241,11 @@
 		497299621FE177E900972078 /* MapSDK */ = {
 			isa = PBXGroup;
 			children = (
+				49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */,
 				497299631FE177E900972078 /* AMap.bundle */,
 				497299641FE177E900972078 /* AMapSearch */,
 				497299661FE177E900972078 /* AMapFoundation */,
 				497299681FE177E900972078 /* AMap3DMap */,
-				4972996A1FE177E900972078 /* AMap3D.bundle */,
 			);
 			name = MapSDK;
 			path = LocationInfoFramework/MapSDK;
@@ -375,7 +375,7 @@
 				4972996B1FE177E900972078 /* AMap.bundle in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
-				4972996F1FE177E900972078 /* AMap3D.bundle in Resources */,
+				49D16CDD1FE4124C00C4A24F /* AMap3D.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

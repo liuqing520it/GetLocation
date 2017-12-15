@@ -212,7 +212,6 @@
         _mapView.showsLabels = YES;
         _mapView.zoomLevel = 15;
         _mapView.showsUserLocation = YES;
-        //_mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }
@@ -234,7 +233,7 @@
 
 - (UIImageView *)centerMaker{
     if (!_centerMaker) {
-        UIImage *image = [UIImage imageNamed:@"AMap3D.bundle/greenPin"];
+        UIImage *image = [UIImage imageNamed:@"AMap3D.bundle/redPin_lift"];
         _centerMaker = [[UIImageView alloc]initWithImage:image];
         [_centerMaker setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         _centerMaker.center =  CGPointMake(SCREEN_WIDTH / 2, CGRectGetHeight(_mapView.bounds)*0.5f);
@@ -332,6 +331,15 @@
         // 范围移动时当前页面数重置
         self.searchPage = 1;
         [self checkThePinIsInCurrentLocationCenter];
+        
+        ///大头针动画
+        [UIView animateWithDuration:0.25 animations:^{
+            self.centerMaker.transform = CGAffineTransformMakeTranslation(0, -20);
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.centerMaker.transform = CGAffineTransformIdentity;
+            }];
+        }];
     }
     
     self.isMapViewRegionChangedFromTableView = NO;
@@ -340,10 +348,10 @@
 #pragma mark locationButton 的选中状态改变 根据 大头针是否在定位点
 
 - (void)checkThePinIsInCurrentLocationCenter{
-    NSString *mapViewLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.latitude];
-    NSString *mapViewLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.userLocation.location.coordinate.longitude];
-    NSString *pointLatitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.latitude];
-    NSString *pointLongitude = [NSString stringWithFormat:@"%0.4f",self.mapView.centerCoordinate.longitude];
+    NSString *mapViewLatitude = [NSString stringWithFormat:@"%0.3f",self.mapView.userLocation.location.coordinate.latitude];
+    NSString *mapViewLongitude = [NSString stringWithFormat:@"%0.3f",self.mapView.userLocation.location.coordinate.longitude];
+    NSString *pointLatitude = [NSString stringWithFormat:@"%0.3f",self.mapView.centerCoordinate.latitude];
+    NSString *pointLongitude = [NSString stringWithFormat:@"%0.3f",self.mapView.centerCoordinate.longitude];
     
     if ([mapViewLatitude isEqualToString:pointLatitude] && [mapViewLongitude isEqualToString:pointLongitude]) {
         self.locationButton.selected = YES;
@@ -359,17 +367,6 @@
 {
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
         return nil;
-    }
-    
-    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
-        static NSString *reuseIndetifier = @"anntationReuseIndetifier";
-        MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
-        if (!annotationView) {
-            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
-            annotationView.image = [UIImage imageNamed:@"msg_location"];
-            //annotationView.centerOffset = CGPointMake(0, -18);
-        }
-        return annotationView;
     }
     return nil;
 }
