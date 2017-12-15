@@ -12,7 +12,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-
+#import <CoreLocation/CoreLocation.h>
 
 /** 屏幕宽 */
 #define SCREEN_WIDTH    CGRectGetWidth([UIScreen mainScreen].bounds)
@@ -28,10 +28,15 @@
 #define CELL_COUNT                      5
 
 @interface LQGetLocationInfoVC () <UISearchResultsUpdating,
+                                    CLLocationManagerDelegate,
                                     MAMapViewDelegate,
                                     AMapSearchDelegate,
                                     LQSearchResultTableViewControllerDelegate,
                                     LQMapPoiTableViewDelegate>
+
+/** 授权信息 */
+@property(nonatomic,strong)CLLocationManager *locationManager;
+
 /** 搜索控制器 */
 @property(nonatomic,strong)UISearchController *searchController;
 /** 搜索结果展示 */
@@ -79,6 +84,8 @@
     
     //设置导航栏
     [self setUpNavigationBar];
+    
+    [self checkLocationServices];
     ///添加子控件
     [self configUI];
     
@@ -92,6 +99,26 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
+/**
+ 检查定位服务是否开启
+ */
+- (void)checkLocationServices{
+    ///info.plist字典
+    NSArray *infoKeys = [[[NSBundle mainBundle] infoDictionary] allKeys];
+    
+    if (![infoKeys containsObject:@"NSLocationAlwaysAndWhenInUseUsageDescription"]) {
+        NSLog(@"请在info.plist中配置相关key--> Privacy - Location Always and When In Use Usage Description");
+    }
+    if(![infoKeys containsObject:@"NSLocationWhenInUseUsageDescription"]){
+        NSLog(@"请在info.plist中配置相关key--> Privacy - Location When In Use Usage Description");
+    }
+    ///如果没有授权则申请授权
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+
 
 #pragma mark - 内部控制方法
 /**
@@ -177,6 +204,15 @@
 
 #pragma mark lazy load
 
+- (CLLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc]init];
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
+}
+
+
 - (UISearchController *)searchController{
     if (!_searchController) {
         _searchController = [[UISearchController alloc]initWithSearchResultsController:self.searchResultTableViewController];
@@ -253,6 +289,36 @@
     }
     return _locationButton;
 }
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"用户还未决定授权定位服务!");
+            break;
+        case kCLAuthorizationStatusRestricted:
+            NSLog(@"定位服务受限!");
+            break;
+        case kCLAuthorizationStatusDenied:
+            if([CLLocationManager locationServicesEnabled]){
+                NSLog(@"定位服务授权被用户拒绝!");
+            }
+            else{
+                NSLog(@"定位服务未开启!");
+            }
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+            NSLog(@"定位服务始终开启!");
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            NSLog(@"定位服务使用期间开启!");
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark - UISearchViewControllerDelegate
 
