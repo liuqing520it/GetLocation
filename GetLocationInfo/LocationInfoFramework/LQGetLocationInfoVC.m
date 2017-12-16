@@ -194,6 +194,8 @@
 /** 地图回到用户定位点 */
 - (void)actionLocation{
     [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+    //tableView回到顶部
+    [self.mapPoiView scrollToTop];
 }
 
 

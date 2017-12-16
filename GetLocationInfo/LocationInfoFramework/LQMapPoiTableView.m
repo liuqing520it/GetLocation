@@ -27,11 +27,23 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            
+            }
         [self addSubview:self.tableView];
     }
     return self;
 }
+
+#pragma mark - 外部控制方法
+///回到顶部
+- (void)scrollToTop{
+    [self.tableView setContentOffset:CGPointZero animated:YES];
+}
+
+#pragma mark - 内部控制方法
 
 - (UITableView *)tableView{
     if (!_tableView) {
