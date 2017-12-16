@@ -14,15 +14,15 @@ a framework can get current location; also search location information.
 
 2. 配置工程
 
-///为了保证编译的静态包含所有架构
+一. 为了保证编译的静态包含所有架构
 
 ![image](https://github.com/liuqing520it/GetLocation/raw/master/5946F42A.png)
 
-///制作的是静态库, 动态库是不允许上架的!
+二. 制作的是静态库, 动态库是不允许上架的!
 
 ![image](https://github.com/liuqing520it/GetLocation/raw/master/BC98F35A.png)
 
-///最终发布版本是release,所以这里编译release
+三. 最终发布版本是release,所以这里编译release
 
 ![image](https://github.com/liuqing520it/GetLocation/raw/master/WX20171216-230645.png)
 
