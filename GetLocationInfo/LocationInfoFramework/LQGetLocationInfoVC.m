@@ -198,8 +198,6 @@
 /** 地图回到用户定位点 */
 - (void)actionLocation{
     [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
-    //tableView回到顶部
-    [self.mapPoiView scrollToTop];
 }
 
 
@@ -395,8 +393,9 @@
 }
 
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    
     if (!self.isMapViewRegionChangedFromTableView && self.isFirstLocated) {
-        
+       
         [self searchReGeocodeWithAMapGeoPoint];
 
         [self searchPoiByAMapGeoPoint];
@@ -412,6 +411,13 @@
                 self.centerMaker.transform = CGAffineTransformIdentity;
             }];
         }];
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.mapPoiView scrollToTop];
+        });
+        
+    
     }
     self.isMapViewRegionChangedFromTableView = NO;
 }

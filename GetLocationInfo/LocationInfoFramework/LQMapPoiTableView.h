@@ -26,7 +26,5 @@
 ///代理
 @property(nonatomic,weak)id <LQMapPoiTableViewDelegate>delegate;
 
-///回到顶部
 - (void)scrollToTop;
-
 @end

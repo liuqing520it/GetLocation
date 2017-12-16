@@ -41,6 +41,8 @@
 ///回到顶部
 - (void)scrollToTop{
     [self.tableView setContentOffset:CGPointZero animated:YES];
+    
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 }
 
 #pragma mark - 内部控制方法
@@ -177,22 +179,22 @@
 {
     // 刷新POI后默认第一行为打勾状态
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    // 判断搜索结果是否来自于下拉刷新
+    // 判断搜索结果是否来自于上拉加载
     if (_isFromMoreLoadRequest) {
         _isFromMoreLoadRequest = NO;
+        ///加拉加载停止
+        [self.tableView.infiniteScrollingView stopAnimating];
     }
     else{
         //保留数组第一行数据
         if (self.dataSource.count > 1) {
             [self.dataSource removeObjectsInRange:NSMakeRange(1, self.dataSource.count-1)];
         }
+        ///下拉刷新停止
+        [self.tableView.refreshControl endRefreshing];
     }
     
-    ///下拉刷新停止
-    [self.tableView.refreshControl endRefreshing];
-    ///加拉加载停止
-    [self.tableView.infiniteScrollingView stopAnimating];
-    
+  
     // 添加数据并刷新TableView
     [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
         [self.dataSource addObject:obj];
@@ -210,6 +212,8 @@
     }
     
     [self.tableView reloadData];
+    
+  
 }
 
 ///下拉刷新
