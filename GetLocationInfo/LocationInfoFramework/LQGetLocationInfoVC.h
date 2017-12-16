@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol LQGetLocationInfoVCDelegate <NSObject>
-
+@required;
 /**
  获取地理位置信息
  @param latitude 经度

@@ -33,10 +33,8 @@
                                     AMapSearchDelegate,
                                     LQSearchResultTableViewControllerDelegate,
                                     LQMapPoiTableViewDelegate>
-
 /** 授权信息 */
 @property(nonatomic,strong)CLLocationManager *locationManager;
-
 /** 搜索控制器 */
 @property(nonatomic,strong)UISearchController *searchController;
 /** 搜索结果展示 */
@@ -168,9 +166,15 @@
 
 //确认按钮点击
 - (void)confirmClick{
+    [self cancelClick];
     ///代理回调
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getLocationLatitude:longitude:province:city:district:position:) ]) {
-        
+        [self.delegate getLocationLatitude:self.mapView.centerCoordinate.latitude
+                                 longitude:self.mapView.centerCoordinate.longitude
+                                  province:self.mapPoiView.selectedPoi.province
+                                      city:self.mapPoiView.selectedPoi.city
+                                  district:self.mapPoiView.selectedPoi.district
+                                  position:self.mapPoiView.selectedPoi.address];
     }
 }
 
@@ -409,7 +413,6 @@
             }];
         }];
     }
-    
     self.isMapViewRegionChangedFromTableView = NO;
 }
 
@@ -428,8 +431,6 @@
         self.locationButton.selected = NO;
     }
 }
-
-
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
