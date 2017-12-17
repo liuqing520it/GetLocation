@@ -4,7 +4,7 @@ a framework can get current location; also search location information.
 
 
 ## 效果图 effect picture
-![image](https://github.com/liuqing520it/GetLocation/raw/master/images/get-position.gif)
+![image](https://github.com/liuqing520it/GetLocation/raw/master/images/getposition.gif)
 
 ## 如何使用 How to use
 
