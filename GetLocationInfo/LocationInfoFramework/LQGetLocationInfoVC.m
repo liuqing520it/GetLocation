@@ -388,6 +388,8 @@
         
         [self searchPoiByAMapGeoPoint];
         
+        self.locationButton.selected = YES;
+        
         self.isFirstLocated = YES;
     }
 }

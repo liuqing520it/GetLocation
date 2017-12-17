@@ -14,8 +14,6 @@
 
 @property(nonatomic,strong)UIButton * pushBtn;
 
-@property(nonatomic,strong)UILabel *showResultLabel;
-
 @end
 
 @implementation ViewController
@@ -24,23 +22,7 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.pushBtn];
-    [self.view addSubview:self.showResultLabel];
-
 }
-
-
-- (UILabel *)showResultLabel{
-    if (!_showResultLabel) {
-        _showResultLabel = [[UILabel alloc]init];
-        _showResultLabel.frame = CGRectMake(0, 0, 300, 300);
-        _showResultLabel.center = CGPointMake(self.view.center.x, 300);
-        _showResultLabel.textColor = [UIColor blackColor];
-        _showResultLabel.backgroundColor = [UIColor orangeColor];
-        _showResultLabel.numberOfLines = 0;
-    }
-    return _showResultLabel;
-}
-
 
 - (UIButton *)pushBtn{
     if (!_pushBtn) {
@@ -63,8 +45,12 @@
 }
 
 - (void)getLocationLatitude:(double)latitude longitude:(double)longitude province:(NSString *)province city:(NSString *)city district:(NSString *)district position:(NSString *)position{
-    
-    self.showResultLabel.text = [NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"位置信息" message:[NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+   
 }
 
 
