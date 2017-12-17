@@ -33,7 +33,7 @@ a framework can get current location; also search location information.
 * tips: 如果需要模拟器调试 建议打包的时候将真机版本和模拟器版本合并;
 
 合并命令:sudo lipo -create "真机framework路径" 加上 "模拟器framework路径"  -output "合并之后的路径"/"静态库的名字"
-* 例如: ```sudo lipo -create /Users/liuqing/Library/Developer/Xcode/DerivedData/GetLocationInfo-hcrqkywlkcuzasgisrzxjhdpwfxs/Build/Products/Release-iphoneos/LocationInfoFramework.framework/LocationInfoFramework /Users/liuqing/Library/Developer/Xcode/DerivedData/GetLocationInfo-hcrqkywlkcuzasgisrzxjhdpwfxs/Build/Products/Release-iphonesimulator/LocationInfoFramework.framework/LocationInfoFramework -output /User/Desktop/temp/LocationInfoFramework ```
+* 例如: ```sudo lipo -create /Users/liuqing/Library/Developer/Xcode/DerivedData/GetLocationInfo-hcrqkyxxxxxxxxdpwfxs/Build/Products/Release-iphoneos/LocationInfoFramework.framework/LocationInfoFramework /Users/liuqing/Library/Developer/Xcode/DerivedData/GetLocationInfo-hcrqxwlxxxxxxxxxwfxs/Build/Products/Release-iphonesimulator/LocationInfoFramework.framework/LocationInfoFramework -output /User/Desktop/temp/LocationInfoFramework ```
 
 ##
 4. 将打包好的framework和资源包拖入到新工程
@@ -56,5 +56,8 @@ pod 'AMapSearch'
     ![image](https://github.com/liuqing520it/GetLocation/raw/master/images/WX20171217-223402.png)
     ###
     
+    
+    ## 最后 
+    如果使用过程中遇到问题,欢迎随时issues
 
 
