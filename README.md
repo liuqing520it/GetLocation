@@ -48,18 +48,18 @@ pod 'AMapSearch'
 ```
 ###
 6. 代码调用
- ```objc
-    一. 首先在info.plist 添加两个重要Key :
-    
-    Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
-    
-    二. 其次包含头文件,遵循代理接收回调;
 
+    一. 首先在info.plist 添加两个重要Key :
+```objc
+    Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
+```
+    二. 其次包含头文件,遵循代理接收回调;
+```objc
     #import <LocationInfoFramework/LQGetLocationInfoVC.h>
     @interface ViewController ()<LQGetLocationInfoVCDelegate>
-
+```
    三. 最后present出封装好的控制器遵循代理并实现代理方法
-   
+```objc
    - (void)pushVC{
    LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
    locationVC.delegate = self;
@@ -73,10 +73,10 @@ pod 'AMapSearch'
    [self presentViewController:alert animated:YES completion:nil];
    }
 ```
-###
+##
+
     
-    
-    ## 最后 
+## 最后
     如果使用过程中遇到问题,欢迎随时issues
 
 
