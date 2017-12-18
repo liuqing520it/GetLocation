@@ -48,32 +48,31 @@ pod 'AMapSearch'
 ```
 ###
 6. 代码调用
-
+ ```objc
     一. 首先在info.plist 添加两个重要Key :
-    ``` Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
-    ```
     
-    ###
+    Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
+    
     二. 其次包含头文件,遵循代理接收回调;
-    ```objc #import <LocationInfoFramework/LQGetLocationInfoVC.h>
+
+    #import <LocationInfoFramework/LQGetLocationInfoVC.h>
     @interface ViewController ()<LQGetLocationInfoVCDelegate>
-    ```
-    ###
+
    三. 最后present出封装好的控制器遵循代理并实现代理方法
-       ```objc
-       - (void)pushVC{
-       LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
-       locationVC.delegate = self;
-       [self presentViewController:[[UINavigationController alloc]initWithRootViewController:locationVC] animated:YES completion:nil];
-       }
-       - (void)getLocationLatitude:(double)latitude longitude:(double)longitude province:(NSString *)province city:(NSString *)city district:(NSString *)district position:(NSString *)position{
-       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"位置信息" message:[NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position] preferredStyle:UIAlertControllerStyleAlert];
-       [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-       [alert dismissViewControllerAnimated:YES completion:nil];
-       }]];
-       [self presentViewController:alert animated:YES completion:nil];
-       }
-       ```
+   
+   - (void)pushVC{
+   LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
+   locationVC.delegate = self;
+   [self presentViewController:[[UINavigationController alloc]initWithRootViewController:locationVC] animated:YES completion:nil];
+   }
+   - (void)getLocationLatitude:(double)latitude longitude:(double)longitude province:(NSString *)province city:(NSString *)city district:(NSString *)district position:(NSString *)position{
+   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"位置信息" message:[NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position] preferredStyle:UIAlertControllerStyleAlert];
+   [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+   [alert dismissViewControllerAnimated:YES completion:nil];
+   }]];
+   [self presentViewController:alert animated:YES completion:nil];
+   }
+```
 ###
     
     
