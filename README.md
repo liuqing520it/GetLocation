@@ -37,24 +37,44 @@ a framework can get current location; also search location information.
 
 ##
 4. 将打包好的framework和资源包拖入到新工程
+
 ![image](https://github.com/liuqing520it/GetLocation/raw/master/images/WX20171217-221359.png)
 ###
-5. 因为集成的是高德地图的SDK所以工程需要导入高德的SDK;这里采用Pod自动导入(如果需要手动导入请参考 [高德的开放平台] (http://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration). )
-```
+5. 因为集成的是高德地图的SDK所以工程需要导入高德的SDK;这里采用Pod自动导入(如果需要手动导入请参考 [高德的开放平台] http://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
+```objc
 pod 'AMap3DMap'
 
 pod 'AMapSearch'
 ```
 ###
 6. 代码调用
-    一. 首先在info.plist 添加两个重要Key ``` Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description```
+
+    一. 首先在info.plist 添加两个重要Key :
+    ``` Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
+    ```
+    
     ###
-    二. 首先包含头文件,遵循代理接收回调;
-   ![image](https://github.com/liuqing520it/GetLocation/raw/master/images/WX20171217-222933.png)
-   ###
-   三. present出封装好的控制器遵循代理并实现代理方法
-    ![image](https://github.com/liuqing520it/GetLocation/raw/master/images/WX20171217-223402.png)
+    二. 其次包含头文件,遵循代理接收回调;
+    ```objc #import <LocationInfoFramework/LQGetLocationInfoVC.h>
+    @interface ViewController ()<LQGetLocationInfoVCDelegate>
+    ```
     ###
+   三. 最后present出封装好的控制器遵循代理并实现代理方法
+       ```objc
+       - (void)pushVC{
+       LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
+       locationVC.delegate = self;
+       [self presentViewController:[[UINavigationController alloc]initWithRootViewController:locationVC] animated:YES completion:nil];
+       }
+       - (void)getLocationLatitude:(double)latitude longitude:(double)longitude province:(NSString *)province city:(NSString *)city district:(NSString *)district position:(NSString *)position{
+       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"位置信息" message:[NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position] preferredStyle:UIAlertControllerStyleAlert];
+       [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       [alert dismissViewControllerAnimated:YES completion:nil];
+       }]];
+       [self presentViewController:alert animated:YES completion:nil];
+       }
+       ```
+###
     
     
     ## 最后 
