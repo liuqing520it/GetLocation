@@ -49,23 +49,42 @@ pod 'AMapSearch'
 ###
 6. 代码调用
 
-    一. 首先在info.plist 添加两个重要Key :
+一. 首先在info.plist 添加两个重要Key :
 ```objc
     Privacy - Location When In Use Usage Description和Privacy - Location Always and When In Use Usage Description
 ```
-    二. 其次包含头文件,遵循代理接收回调;
+二. 其次包含头文件,遵循代理接收回调;
 ```objc
     #import <LocationInfoFramework/LQGetLocationInfoVC.h>
     @interface ViewController ()<LQGetLocationInfoVCDelegate>
 ```
-   三. 最后present出封装好的控制器遵循代理并实现代理方法
+三. 最后present出封装好的控制器遵循代理并实现代理方法
 ```objc
-   - (void)pushVC{
+    /**
+    present选择地址的控制器
+    */
+   - (void)presentVC{
    LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
    locationVC.delegate = self;
    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:locationVC] animated:YES completion:nil];
    }
-   - (void)getLocationLatitude:(double)latitude longitude:(double)longitude province:(NSString *)province city:(NSString *)city district:(NSString *)district position:(NSString *)position{
+   
+   /**
+   获取地理位置信息
+   @param latitude 经度
+   @param longitude 纬度
+   @param province 省
+   @param city 市
+   @param district 市
+   @param position 详细位置信息
+   */
+   - (void)getLocationLatitude:(double)latitude
+                     longitude:(double)longitude
+                      province:(NSString *)province
+                          city:(NSString *)city
+                      district:(NSString *)district
+                      position:(NSString *)position{
+  //这里只是将结果alert出来,方便验证
    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"位置信息" message:[NSString stringWithFormat:@"经度:%f;\n纬度:%f;\n%@-%@-%@-%@",latitude,longitude,province,city,district,position] preferredStyle:UIAlertControllerStyleAlert];
    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
    [alert dismissViewControllerAnimated:YES completion:nil];
