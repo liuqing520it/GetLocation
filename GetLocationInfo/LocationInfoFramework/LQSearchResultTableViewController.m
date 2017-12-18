@@ -20,6 +20,7 @@
 
 @property(nonatomic,assign)NSInteger searchPage;
 
+@property(nonatomic,strong)UILabel * noResultLabel;
 
 @end
 
@@ -35,9 +36,9 @@
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadMoreData];
     }];
+    
+    [self.tableView addSubview:self.noResultLabel];
 }
-
-
 
 #pragma mark - lazy load
 
@@ -55,6 +56,20 @@
         _searchAPI.delegate = self;
     }
     return _searchAPI;
+}
+
+- (UILabel *)noResultLabel{
+    if (!_noResultLabel) {
+        _noResultLabel = [[UILabel alloc]init];
+        _noResultLabel.hidden = YES;
+        _noResultLabel.text = @"无结果";
+        _noResultLabel.font = [UIFont boldSystemFontOfSize:20];
+        _noResultLabel.textColor = [UIColor darkGrayColor];
+        [_noResultLabel sizeToFit];///确定size
+        ///先确定size再确定center,不然会有偏差
+        _noResultLabel.center = CGPointMake(self.view.center.x, 80);
+    }
+    return _noResultLabel;
 }
 
 #pragma mark - 内部控制方法
@@ -111,6 +126,10 @@
 
 - (void)searchPoi
 {
+    //过滤空字符串
+    if(self.searchKeyword.length <= 0){
+        return;
+    }
     //POI关键字搜索
     AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc] init];
     request.keywords = self.searchKeyword;
@@ -144,16 +163,18 @@
         [self.searchResultArray removeAllObjects];
     }
     // 刷新完成,没有数据时不显示footer
-    if (response.pois.count){
+    if (response.pois.count > 0){
         // 添加数据并刷新TableView
         [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
             [self.searchResultArray addObject:obj];
         }];
-        
-        [self.refreshControl endRefreshing];
         [self.tableView.infiniteScrollingView stopAnimating];
-        [self.tableView reloadData];
     }
+    
+    self.noResultLabel.hidden = response.pois.count > 0;
+
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-//#import "LQGetLocationInfoVC.h"
 #import <LocationInfoFramework/LQGetLocationInfoVC.h>
 
 @interface ViewController ()<LQGetLocationInfoVCDelegate>
@@ -32,12 +31,12 @@
         [_pushBtn setTitle:@"跳转" forState:UIControlStateNormal];
         [_pushBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
         _pushBtn.backgroundColor = [UIColor redColor];
-        [_pushBtn addTarget:self action:@selector(pushVC) forControlEvents:UIControlEventTouchUpInside];
+        [_pushBtn addTarget:self action:@selector(presentVC) forControlEvents:UIControlEventTouchUpInside];
     }
     return _pushBtn;
 }
 
-- (void)pushVC{
+- (void)presentVC{
     
     LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62409cf80ec44a14bd03d"];
     locationVC.delegate = self;

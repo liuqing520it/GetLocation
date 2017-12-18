@@ -40,7 +40,7 @@ a framework can get current location; also search location information.
 
 ![image](https://github.com/liuqing520it/GetLocation/raw/master/images/WX20171217-221359.png)
 ###
-5. 因为集成的是高德地图的SDK所以工程需要导入高德的SDK;这里采用Pod自动导入(如果需要手动导入请参考 [高德的开放平台] http://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
+5. 因为集成的是高德地图的SDK所以工程需要导入高德的SDK;这里采用Pod自动导入(如果需要手动导入请参考 [高德的开放平台]http://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
 ```objc
 pod 'AMap3DMap'
 
@@ -64,6 +64,7 @@ pod 'AMapSearch'
     present选择地址的控制器
     */
    - (void)presentVC{
+   ///这里的ApiKey 是高德开放平台申请的,需要绑定对应的bundle id;具体申请流程请参考'高德开放平台'
    LQGetLocationInfoVC *locationVC = [[LQGetLocationInfoVC alloc]initWithApiKey:@"491fb90b01e62xxx9cf80ec44a14bd03d"];
    locationVC.delegate = self;
    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:locationVC] animated:YES completion:nil];
@@ -75,7 +76,7 @@ pod 'AMapSearch'
    @param longitude 纬度
    @param province 省
    @param city 市
-   @param district 市
+   @param district 行政区
    @param position 详细位置信息
    */
    - (void)getLocationLatitude:(double)latitude

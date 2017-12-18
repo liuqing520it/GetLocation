@@ -16,7 +16,7 @@
  @param longitude 纬度
  @param province 省
  @param city 市
- @param district 市
+ @param district 行政区
  @param position 详细位置信息
  */
 - (void)getLocationLatitude:(double)latitude
