@@ -12,10 +12,6 @@
 		491431DC1FDC189200AF225C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491431DA1FDC189200AF225C /* Main.storyboard */; };
 		491431DE1FDC189200AF225C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491431DD1FDC189200AF225C /* Assets.xcassets */; };
 		491431E41FDC189200AF225C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431E31FDC189200AF225C /* main.m */; };
-		491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; };
-		491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */; };
 		491432161FDD748400AF225C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432151FDD747500AF225C /* libc++.tbd */; };
 		491432181FDD749100AF225C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432171FDD749100AF225C /* libz.tbd */; };
 		4914321A1FDD749E00AF225C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432191FDD749E00AF225C /* libstdc++.6.0.9.tbd */; };
@@ -25,28 +21,16 @@
 		491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432211FDD750900AF225C /* SystemConfiguration.framework */; };
 		491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432231FDD751A00AF225C /* CoreTelephony.framework */; };
 		491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491432251FDD754300AF225C /* CoreLocation.framework */; };
-		49703FB51FDFB9A1004F349B /* LQMapPoiTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */; };
-		49703FB61FDFB9A1004F349B /* LQMapPoiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */; };
-		497299521FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = 497299501FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.h */; };
-		497299531FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 497299511FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.m */; };
-		4972996B1FE177E900972078 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 497299631FE177E900972078 /* AMap.bundle */; };
-		4972996C1FE177E900972078 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299651FE177E900972078 /* AMapSearchKit.framework */; };
-		4972996D1FE177E900972078 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299671FE177E900972078 /* AMapFoundationKit.framework */; };
-		4972996E1FE177E900972078 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497299691FE177E900972078 /* MAMapKit.framework */; };
-		4972999C1FE2198F00972078 /* LQSearchResultTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4972999A1FE2198F00972078 /* LQSearchResultTableViewController.h */; };
-		4972999D1FE2198F00972078 /* LQSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4972999B1FE2198F00972078 /* LQSearchResultTableViewController.m */; };
-		49D16CDD1FE4124C00C4A24F /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */; };
+		4960AA301FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960AA291FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.m */; };
+		4960AA311FEB9DBF0079A3C2 /* LQMapPoiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960AA2A1FEB9DBF0079A3C2 /* LQMapPoiTableView.m */; };
+		4960AA321FEB9DBF0079A3C2 /* LQSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960AA2B1FEB9DBF0079A3C2 /* LQSearchResultTableViewController.m */; };
+		4960AA331FEB9DBF0079A3C2 /* LQGetLocationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4960AA2C1FEB9DBF0079A3C2 /* LQGetLocationInfoVC.m */; };
+		4960AA3D1FEB9E640079A3C2 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4960AA381FEB9E610079A3C2 /* AMapFoundationKit.framework */; };
+		4960AA3E1FEB9E640079A3C2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4960AA3A1FEB9E610079A3C2 /* AMapSearchKit.framework */; };
+		4960AA3F1FEB9E640079A3C2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4960AA3C1FEB9E640079A3C2 /* MAMapKit.framework */; };
+		4960AA421FEB9F290079A3C2 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4960AA411FEB9F290079A3C2 /* AMap.bundle */; };
+		4960AA431FEB9F580079A3C2 /* AMap3D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4960AA341FEB9E3D0079A3C2 /* AMap3D.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		491431F41FDC1A4E00AF225C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 491431C91FDC189200AF225C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 491431EE1FDC1A4E00AF225C;
-			remoteInfo = LocationInfoFramework;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		491431FB1FDC1A4E00AF225C /* Embed Frameworks */ = {
@@ -55,7 +39,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				491431F71FDC1A4E00AF225C /* LocationInfoFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,10 +55,6 @@
 		491431DD1FDC189200AF225C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		491431E21FDC189200AF225C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491431E31FDC189200AF225C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationInfoFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		491431F21FDC1A4E00AF225C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQGetLocationInfoVC.h; sourceTree = "<group>"; };
-		491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQGetLocationInfoVC.m; sourceTree = "<group>"; };
 		491432151FDD747500AF225C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		491432171FDD749100AF225C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		491432191FDD749E00AF225C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
@@ -85,22 +64,19 @@
 		491432211FDD750900AF225C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		491432231FDD751A00AF225C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		491432251FDD754300AF225C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQMapPoiTableView.h; sourceTree = "<group>"; };
-		49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQMapPoiTableView.m; sourceTree = "<group>"; };
-		497299501FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
-		497299511FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
-		497299551FE1776F00972078 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
-		497299571FE1776F00972078 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
-		497299591FE1776F00972078 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
-		4972995B1FE1776F00972078 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		4972995C1FE1776F00972078 /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
-		497299631FE177E900972078 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
-		497299651FE177E900972078 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
-		497299671FE177E900972078 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
-		497299691FE177E900972078 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		4972999A1FE2198F00972078 /* LQSearchResultTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQSearchResultTableViewController.h; sourceTree = "<group>"; };
-		4972999B1FE2198F00972078 /* LQSearchResultTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQSearchResultTableViewController.m; sourceTree = "<group>"; };
-		49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
+		4960AA281FEB9DBF0079A3C2 /* LQGetLocationInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQGetLocationInfoVC.h; sourceTree = "<group>"; };
+		4960AA291FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		4960AA2A1FEB9DBF0079A3C2 /* LQMapPoiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQMapPoiTableView.m; sourceTree = "<group>"; };
+		4960AA2B1FEB9DBF0079A3C2 /* LQSearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSearchResultTableViewController.m; sourceTree = "<group>"; };
+		4960AA2C1FEB9DBF0079A3C2 /* LQGetLocationInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQGetLocationInfoVC.m; sourceTree = "<group>"; };
+		4960AA2D1FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		4960AA2E1FEB9DBF0079A3C2 /* LQMapPoiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQMapPoiTableView.h; sourceTree = "<group>"; };
+		4960AA2F1FEB9DBF0079A3C2 /* LQSearchResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSearchResultTableViewController.h; sourceTree = "<group>"; };
+		4960AA341FEB9E3D0079A3C2 /* AMap3D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap3D.bundle; sourceTree = "<group>"; };
+		4960AA381FEB9E610079A3C2 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		4960AA3A1FEB9E610079A3C2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		4960AA3C1FEB9E640079A3C2 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		4960AA411FEB9F290079A3C2 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = AMap3DMap/MAMapKit.framework/AMap.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,26 +84,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4972996C1FE177E900972078 /* AMapSearchKit.framework in Frameworks */,
-				4972996D1FE177E900972078 /* AMapFoundationKit.framework in Frameworks */,
+				4960AA3E1FEB9E640079A3C2 /* AMapSearchKit.framework in Frameworks */,
 				491432261FDD754A00AF225C /* CoreLocation.framework in Frameworks */,
 				491432241FDD752500AF225C /* CoreTelephony.framework in Frameworks */,
 				491432221FDD751000AF225C /* SystemConfiguration.framework in Frameworks */,
 				491432201FDD74EB00AF225C /* JavaScriptCore.framework in Frameworks */,
 				4914321E1FDD74DB00AF225C /* Security.framework in Frameworks */,
+				4960AA3F1FEB9E640079A3C2 /* MAMapKit.framework in Frameworks */,
 				4914321C1FDD74BE00AF225C /* GLKit.framework in Frameworks */,
 				491432161FDD748400AF225C /* libc++.tbd in Frameworks */,
 				491432181FDD749100AF225C /* libz.tbd in Frameworks */,
 				4914321A1FDD749E00AF225C /* libstdc++.6.0.9.tbd in Frameworks */,
-				4972996E1FE177E900972078 /* MAMapKit.framework in Frameworks */,
-				491431F61FDC1A4E00AF225C /* LocationInfoFramework.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		491431EB1FDC1A4E00AF225C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4960AA3D1FEB9E640079A3C2 /* AMapFoundationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				491431D31FDC189200AF225C /* GetLocationInfo */,
-				491431F01FDC1A4E00AF225C /* LocationInfoFramework */,
 				491431D21FDC189200AF225C /* Products */,
 				491432141FDD747500AF225C /* Frameworks */,
 			);
@@ -148,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				491431D11FDC189200AF225C /* GetLocationInfo.app */,
-				491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,7 +122,9 @@
 		491431D31FDC189200AF225C /* GetLocationInfo */ = {
 			isa = PBXGroup;
 			children = (
-				497299621FE177E900972078 /* MapSDK */,
+				4960AA361FEB9E530079A3C2 /* MapKit */,
+				4960AA341FEB9E3D0079A3C2 /* AMap3D.bundle */,
+				4960AA271FEB9DBF0079A3C2 /* Sources */,
 				491431D41FDC189200AF225C /* AppDelegate.h */,
 				491431D51FDC189200AF225C /* AppDelegate.m */,
 				491431D71FDC189200AF225C /* ViewController.h */,
@@ -167,23 +135,6 @@
 				491431E31FDC189200AF225C /* main.m */,
 			);
 			path = GetLocationInfo;
-			sourceTree = "<group>";
-		};
-		491431F01FDC1A4E00AF225C /* LocationInfoFramework */ = {
-			isa = PBXGroup;
-			children = (
-				497299541FE1776F00972078 /* MapSDK */,
-				491431FC1FDC1C8900AF225C /* LQGetLocationInfoVC.h */,
-				491431FD1FDC1C8900AF225C /* LQGetLocationInfoVC.m */,
-				49703FB31FDFB9A1004F349B /* LQMapPoiTableView.h */,
-				49703FB41FDFB9A1004F349B /* LQMapPoiTableView.m */,
-				4972999A1FE2198F00972078 /* LQSearchResultTableViewController.h */,
-				4972999B1FE2198F00972078 /* LQSearchResultTableViewController.m */,
-				497299501FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.h */,
-				497299511FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.m */,
-				491431F21FDC1A4E00AF225C /* Info.plist */,
-			);
-			path = LocationInfoFramework;
 			sourceTree = "<group>";
 		};
 		491432141FDD747500AF225C /* Frameworks */ = {
@@ -202,94 +153,58 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		497299541FE1776F00972078 /* MapSDK */ = {
+		4960AA271FEB9DBF0079A3C2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				497299551FE1776F00972078 /* AMap.bundle */,
-				497299561FE1776F00972078 /* AMapSearch */,
-				497299581FE1776F00972078 /* AMapFoundation */,
-				4972995A1FE1776F00972078 /* AMap3DMap */,
-				4972995C1FE1776F00972078 /* AMap3D.bundle */,
+				4960AA281FEB9DBF0079A3C2 /* LQGetLocationInfoVC.h */,
+				4960AA2C1FEB9DBF0079A3C2 /* LQGetLocationInfoVC.m */,
+				4960AA2E1FEB9DBF0079A3C2 /* LQMapPoiTableView.h */,
+				4960AA2A1FEB9DBF0079A3C2 /* LQMapPoiTableView.m */,
+				4960AA2F1FEB9DBF0079A3C2 /* LQSearchResultTableViewController.h */,
+				4960AA2B1FEB9DBF0079A3C2 /* LQSearchResultTableViewController.m */,
+				4960AA2D1FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.h */,
+				4960AA291FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.m */,
 			);
-			path = MapSDK;
+			name = Sources;
+			path = ../../Sources;
 			sourceTree = "<group>";
 		};
-		497299561FE1776F00972078 /* AMapSearch */ = {
+		4960AA361FEB9E530079A3C2 /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				497299571FE1776F00972078 /* AMapSearchKit.framework */,
+				4960AA411FEB9F290079A3C2 /* AMap.bundle */,
+				4960AA3B1FEB9E640079A3C2 /* AMap3DMap */,
+				4960AA371FEB9E610079A3C2 /* AMapFoundation */,
+				4960AA391FEB9E610079A3C2 /* AMapSearch */,
 			);
-			path = AMapSearch;
+			path = MapKit;
 			sourceTree = "<group>";
 		};
-		497299581FE1776F00972078 /* AMapFoundation */ = {
+		4960AA371FEB9E610079A3C2 /* AMapFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				497299591FE1776F00972078 /* AMapFoundationKit.framework */,
+				4960AA381FEB9E610079A3C2 /* AMapFoundationKit.framework */,
 			);
 			path = AMapFoundation;
 			sourceTree = "<group>";
 		};
-		4972995A1FE1776F00972078 /* AMap3DMap */ = {
+		4960AA391FEB9E610079A3C2 /* AMapSearch */ = {
 			isa = PBXGroup;
 			children = (
-				4972995B1FE1776F00972078 /* MAMapKit.framework */,
-			);
-			path = AMap3DMap;
-			sourceTree = "<group>";
-		};
-		497299621FE177E900972078 /* MapSDK */ = {
-			isa = PBXGroup;
-			children = (
-				49D16CDC1FE4124C00C4A24F /* AMap3D.bundle */,
-				497299631FE177E900972078 /* AMap.bundle */,
-				497299641FE177E900972078 /* AMapSearch */,
-				497299661FE177E900972078 /* AMapFoundation */,
-				497299681FE177E900972078 /* AMap3DMap */,
-			);
-			name = MapSDK;
-			path = LocationInfoFramework/MapSDK;
-			sourceTree = SOURCE_ROOT;
-		};
-		497299641FE177E900972078 /* AMapSearch */ = {
-			isa = PBXGroup;
-			children = (
-				497299651FE177E900972078 /* AMapSearchKit.framework */,
+				4960AA3A1FEB9E610079A3C2 /* AMapSearchKit.framework */,
 			);
 			path = AMapSearch;
 			sourceTree = "<group>";
 		};
-		497299661FE177E900972078 /* AMapFoundation */ = {
+		4960AA3B1FEB9E640079A3C2 /* AMap3DMap */ = {
 			isa = PBXGroup;
 			children = (
-				497299671FE177E900972078 /* AMapFoundationKit.framework */,
-			);
-			path = AMapFoundation;
-			sourceTree = "<group>";
-		};
-		497299681FE177E900972078 /* AMap3DMap */ = {
-			isa = PBXGroup;
-			children = (
-				497299691FE177E900972078 /* MAMapKit.framework */,
+				4960AA3C1FEB9E640079A3C2 /* MAMapKit.framework */,
 			);
 			path = AMap3DMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		491431EC1FDC1A4E00AF225C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				491431FE1FDC1C8900AF225C /* LQGetLocationInfoVC.h in Headers */,
-				4972999C1FE2198F00972078 /* LQSearchResultTableViewController.h in Headers */,
-				49703FB51FDFB9A1004F349B /* LQMapPoiTableView.h in Headers */,
-				497299521FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		491431D01FDC189200AF225C /* GetLocationInfo */ = {
@@ -304,30 +219,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				491431F51FDC1A4E00AF225C /* PBXTargetDependency */,
 			);
 			name = GetLocationInfo;
 			productName = GetLocationInfo;
 			productReference = 491431D11FDC189200AF225C /* GetLocationInfo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		491431EE1FDC1A4E00AF225C /* LocationInfoFramework */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 491431F81FDC1A4E00AF225C /* Build configuration list for PBXNativeTarget "LocationInfoFramework" */;
-			buildPhases = (
-				491431EA1FDC1A4E00AF225C /* Sources */,
-				491431EB1FDC1A4E00AF225C /* Frameworks */,
-				491431EC1FDC1A4E00AF225C /* Headers */,
-				491431ED1FDC1A4E00AF225C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = LocationInfoFramework;
-			productName = LocationInfoFramework;
-			productReference = 491431EF1FDC1A4E00AF225C /* LocationInfoFramework.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -341,10 +237,6 @@
 					491431D01FDC189200AF225C = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
-					};
-					491431EE1FDC1A4E00AF225C = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -362,7 +254,6 @@
 			projectRoot = "";
 			targets = (
 				491431D01FDC189200AF225C /* GetLocationInfo */,
-				491431EE1FDC1A4E00AF225C /* LocationInfoFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -372,17 +263,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4972996B1FE177E900972078 /* AMap.bundle in Resources */,
+				4960AA431FEB9F580079A3C2 /* AMap3D.bundle in Resources */,
 				491431DE1FDC189200AF225C /* Assets.xcassets in Resources */,
+				4960AA421FEB9F290079A3C2 /* AMap.bundle in Resources */,
 				491431DC1FDC189200AF225C /* Main.storyboard in Resources */,
-				49D16CDD1FE4124C00C4A24F /* AMap3D.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		491431ED1FDC1A4E00AF225C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,32 +277,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4960AA311FEB9DBF0079A3C2 /* LQMapPoiTableView.m in Sources */,
+				4960AA321FEB9DBF0079A3C2 /* LQSearchResultTableViewController.m in Sources */,
+				4960AA331FEB9DBF0079A3C2 /* LQGetLocationInfoVC.m in Sources */,
+				4960AA301FEB9DBF0079A3C2 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				491431D91FDC189200AF225C /* ViewController.m in Sources */,
 				491431E41FDC189200AF225C /* main.m in Sources */,
 				491431D61FDC189200AF225C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		491431EA1FDC1A4E00AF225C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				497299531FE16DE900972078 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				49703FB61FDFB9A1004F349B /* LQMapPoiTableView.m in Sources */,
-				4972999D1FE2198F00972078 /* LQSearchResultTableViewController.m in Sources */,
-				491431FF1FDC1C8900AF225C /* LQGetLocationInfoVC.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		491431F51FDC1A4E00AF225C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 491431EE1FDC1A4E00AF225C /* LocationInfoFramework */;
-			targetProxy = 491431F41FDC1A4E00AF225C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		491431DA1FDC189200AF225C /* Main.storyboard */ = {
@@ -480,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -529,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -546,9 +415,9 @@
 				DEVELOPMENT_TEAM = NBL9PB7UR2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMapFoundation",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMapSearch",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMap3DMap",
 				);
 				INFOPLIST_FILE = GetLocationInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -574,9 +443,9 @@
 				DEVELOPMENT_TEAM = NBL9PB7UR2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMapFoundation",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMapSearch",
+					"$(PROJECT_DIR)/GetLocationInfo/MapKit/AMap3DMap",
 				);
 				INFOPLIST_FILE = GetLocationInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -589,74 +458,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		491431F91FDC1A4E00AF225C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
-				);
-				INFOPLIST_FILE = LocationInfoFramework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = liuqing.LocationInfoFramework;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		491431FA1FDC1A4E00AF225C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapFoundation",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMapSearch",
-					"$(PROJECT_DIR)/LocationInfoFramework/MapSDK/AMap3DMap",
-				);
-				INFOPLIST_FILE = LocationInfoFramework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = liuqing.LocationInfoFramework;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -677,15 +478,6 @@
 			buildConfigurations = (
 				491431E81FDC189200AF225C /* Debug */,
 				491431E91FDC189200AF225C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		491431F81FDC1A4E00AF225C /* Build configuration list for PBXNativeTarget "LocationInfoFramework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				491431F91FDC1A4E00AF225C /* Debug */,
-				491431FA1FDC1A4E00AF225C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

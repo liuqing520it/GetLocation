@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <LocationInfoFramework/LQGetLocationInfoVC.h>
+#import "LQGetLocationInfoVC.h"
 
 @interface ViewController ()<LQGetLocationInfoVCDelegate>
 
